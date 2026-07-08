@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      box-sizing: border-box;
+      margin:0;
+      padding: 0;
+      color:white
+    }
+    html{
+      background-color: lightblue;
+    }
+    body{
+      margin:0 auto;
+      background-color: white;
+    }
+
+    header{
+      background-color: #003f5c;
+      grid-area: header;
+    }
+    #menuPrincipal{
+      background-color: #444e86;
+      grid-area:menu1;
+    }
+    #menuSecundario{
+      background-color: #955196;
+      grid-area:menu2;
+    }
+    main{
+      background-color: #dd5182;
+      grid-area: areaP;
+    }
+    aside{
+      background-color: #ff6e54;
+      grid-area: areaS;
+    }
+    footer{
+      background-color: #ffa600;
+      grid-area: footer;
+    }
+/*    
+    body{
+      width: 1200px;
+      height: 100vh;
+      display:grid;
+      grid-template-areas:"header header header"
+                          "menu1  menu1  menu1 "
+                          "menu2  areaP  areaS "
+                          "footer footer footer";
+      grid-template-rows: 200px 80px auto 60px;
+      grid-template-columns: 200px auto 150px;
+    }
+
+    body{
+      width: 100vw;
+      height: 100vh;
+      display:grid;
+      grid-template-areas:"header header header header"
+                          "menu1  areaP  areaS  menu2"
+                          "footer footer footer footer";
+      grid-template-rows: 200px auto 60px;
+      grid-template-columns: 200px auto 150px 200px;
+    }
+
+    body{
+      width: 100vw;
+      height: 100vh;
+      display:grid;
+      grid-template-areas:"header header header"
+                          "menu1  areaP  menu2"
+                          "menu1  areaS  menu2"
+                          "footer footer footer";
+      grid-template-rows: 200px auto 200px 60px;
+      grid-template-columns: 200px auto 200px;
+    }
+*/
+    body{
+      width: 100vw;
+      height: 100vh;
+      display:grid;
+      grid-template-areas:"header header menu2"
+                          "menu1  areaP  menu2"
+                          "menu1  areaS  areaS"
+                          "footer footer footer";
+      grid-template-rows: 200px auto 150px 60px;
+      grid-template-columns: 200px auto 200px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>Título</header>
+  <nav id="menuPrincipal">Menu principal</nav>
+  <nav id="menuSecundario">Menu secundário</nav>
+  <main>Area Principal</main>
+  <aside>Conteúdo secundário</aside>
+  <footer>Rodapé</footer>
+</body>
+</html>
