@@ -1,0 +1,24 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.container{
+    display: flex;
+    align-items: stretch;
+    height: 200px;
+    border: 2px solid #000;
+    background-color: #f0f0f0;
+}
+
+.item{
+    flex: 1;
+    margin: 10px;
+    background-color: #3498db;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

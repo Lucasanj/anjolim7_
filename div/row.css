@@ -1,0 +1,24 @@
+div {
+
+width: 600px;
+background-color: lightgray;
+
+}
+div div{
+
+width: 250px;
+
+}
+#div1{background-color: rgb(1, 183, 238);}
+#div2{background-color: rgb(12, 0, 184);}
+#div3{background-color: rgb(255, 230, 0);}
+#div4{background-color: rgb(9, 255, 0);}
+#div5{background-color: rgb(255, 196, 0);}
+
+.flex-container {
+  display: flex;
+  flex-direction: row; /* Arranges item 1, 2, and 3 side-by-side */
+  justify-content: space-between; /* Evenly spreads items across the horizontal main axis */
+  align-items: center; /* Centers items vertically on the cross axis */
+}
+
