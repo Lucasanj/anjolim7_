@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meu site</title>
+</head>
+<body>
+
+   <g1>
+
+📌 Parte 1 – Conceitos básicos
+
+1. Qual é a função das propriedades width e height em CSS?
+
+width define a largura de um elemento.
+height define a altura de um elemento.
+
+2. Qual a diferença entre medidas relativas e absolutas? Dê dois exemplos de cada.
+
+Medidas absolutas: possuem um valor fixo, que não depende de outros elementos.
+Exemplos: px, cm.
+Medidas relativas: dependem do tamanho de outro elemento ou da tela.
+Exemplos: %, vw, vh, em, rem.
+
+3. Por que medidas relativas são mais indicadas para layouts responsivos?
+Porque elas permitem que os elementos se adaptem a diferentes tamanhos de tela, como celulares, tablets e computadores.
+
+4. O que acontece com a altura de um elemento quando apenas a largura é definida?
+A altura fica automática (auto) e o navegador ajusta conforme o conteúdo interno.
+
+5. O que acontece quando definimos altura (height) menor que o conteúdo?
+O conteúdo pode ultrapassar o limite da caixa e causar transbordamento (overflow).
+
+📌 Parte 2 – Imagens e boas práticas
+
+6. Por que não é recomendado definir largura e altura ao mesmo tempo em imagens?
+Porque pode distorcer a proporção original da imagem.
+
+7. O que pode acontecer ao aumentar muito o tamanho de uma imagem?
+Ela pode perder qualidade e ficar pixelizada.
+
+8. Qual o impacto de imagens muito grandes no desempenho da página?
+Elas aumentam o tempo de carregamento e consomem mais memória e internet.
+
+📌 Parte 3 – Medidas relativas
+
+9. Como funciona o uso de % em CSS?
+O valor é calculado em relação ao tamanho do elemento pai.
+
+Exemplo:
+
+div {
+  width: 50%;
+}
+
+A div terá metade da largura do elemento que a contém.
+
+10. Por que o uso de % para height pode não funcionar?
+Porque a altura depende da altura definida no elemento pai. Se o pai não tiver altura definida, o valor pode não ser aplicado corretamente.
+
+11. O que são vh e vw?
+
+vh: representa uma porcentagem da altura da tela.
+vw: representa uma porcentagem da largura da tela.
+
+Exemplo:
+
+height: 50vh;
+width: 50vw;
+
+12. Qual a principal vantagem de vh e vw em relação ao %?
+Eles são baseados diretamente no tamanho da janela do navegador, não dependendo do elemento pai.
+
+📌 Parte 4 – Controle de dimensões
+
+13. Para que servem as propriedades:
+
+max-width: define a largura máxima permitida.
+min-width: define a largura mínima permitida.
+max-height: define a altura máxima permitida.
+min-height: define a altura mínima permitida.
+
+14. Explique:
+
+width: 50vw;
+min-width: 400px;
+max-width: 600px;
+
+O elemento terá 50% da largura da tela, mas nunca ficará menor que 400px nem maior que 600px.
+
+Exemplo:
+
+Tela pequena → fica com 400px.
+Tela média → usa 50vw.
+Tela grande → limita em 600px.
+📌 Parte 5 – Bordas
+
+15. Quais são as três propriedades principais de uma borda?
+
+border-width → espessura.
+border-style → estilo.
+border-color → cor.
+
+16. Como definir uma borda completa em uma única linha?
+
+border: 3px solid red;
+
+17. Para que serve o border-radius?
+
+Serve para arredondar os cantos de um elemento.
+
+Exemplo:
+
+border-radius: 10px;
+📌 Parte 6 – Margin e Padding
+
+18. Qual a diferença entre margin e padding?
+
+Padding: espaço interno entre o conteúdo e a borda.
+Margin: espaço externo entre elementos.
+
+Exemplo:
+
+div {
+  padding: 20px;
+  margin: 10px;
+}
+
+19. Explique:
+
+margin: 10px 20px;
+
+Significa:
+
+10px em cima e embaixo.
+20px nos lados esquerdo e direito.
+
+20. Explique:
+
+padding: 10px 20px 30px 40px;
+
+Ordem:
+
+Superior: 10px
+Direita: 20px
+Inferior: 30px
+Esquerda: 40px
+
+(Ordem: cima → direita → baixo → esquerda)
+
+📌 Parte 7 – Box Model
+
+21. Por que um elemento pode ficar maior do que o valor definido em width e height?
+Porque o tamanho pode incluir padding, bordas e margens.
+
+22. Explique como funciona o cálculo do tamanho real de um elemento HTML.
+
+Com content-box:
+
+largura total =
+width + padding esquerdo + padding direito + bordas
+
+23. O que faz a propriedade box-sizing?
+Define como o navegador calcula o tamanho total do elemento.
+
+24. Diferença entre:
+
+content-box
+
+Valor padrão.
+width representa apenas o conteúdo.
+Padding e borda aumentam o tamanho final.
+
+border-box
+
+width inclui conteúdo, padding e borda.
+Facilita o controle do layout.
+📌 Parte 8 – Seletor Universal
+
+25. O que faz o seletor * em CSS?
+
+Seleciona todos os elementos HTML da página.
+
+26. Por que usar:
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+Porque cria uma base mais previsível:
+
+Remove margens e espaçamentos padrões.
+Faz os tamanhos incluírem bordas e padding.
+Facilita a criação de layouts.
+💻 Parte 9 – Exercícios Práticos
+
+27. Parágrafo com largura de 400px, altura automática e fundo colorido:
+
+p {
+  width: 400px;
+  height: auto;
+  background-color: lightblue;
+}
+
+28. Imagem com 50% da largura, mínimo 300px e máximo 600px:
+
+img {
+  width: 50%;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+29. h1 com borda vermelha sólida de 3px, padding de 20px e margin de 10px:
+
+h1 {
+  border: 3px solid red;
+  padding: 20px;
+  margin: 10px;
+}
+
+30. Comparação com e sem box-sizing: border-box:
+
+Código:
+
+h1 {
+  width: 300px;
+  height: 100px;
+  padding: 50px;
+}
+Sem box-sizing: border-box:
+
+O tamanho final será:
+
+largura: 300px + 50px + 50px = 400px
+altura: 100px + 50px + 50px = 200px
+Com box-sizing: border-box:
+h1 {
+  box-sizing: border-box;
+}
+
+O tamanho continuará:
+
+largura total: 300px
+altura total: 100px
+
+O padding será incluído dentro dessas medidas.
+   </g1>
+</body>
+</html>
