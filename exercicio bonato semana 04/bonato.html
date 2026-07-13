@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bonato</title>
+	<link rel="stylesheet" href="bonato.css">
+</head>
+<body>
+	<div id="whatsapp">
+		<img src="whatsapp-icon.png" alt="Ícone do WhatsApp">
+	</div>
+	<header>
+		<div id="barra-vermelha"></div>
+		<img src="bonato.png" alt="Logo Bonato">
+		<nav>
+			<ul>
+				<li><a href="#">Institucional</a></li>
+				<li><a href="#">Lojas</a></li>
+				<li><a href="#">Ofertas</a></li>
+				<li><a href="#">Cadastre-se</a></li>
+				<li><a href="#">Trabalhe Conosco</a></li>
+				<li><a href="#">SAC</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div id="banner">
+	</div>
+	<main>
+		<h1>Confira nossa ofertas especiais!</h1>
+		<p>Clique na imagem e veja as ofertas do dias.</p>
+		<section id="cards">
+			<div>
+				<h5>Terça de Padaria e Café</h5>
+				<img src="terca-padaria-cafe.jpg" alt="Café da manhã">
+			</div>
+			<div>
+				<h5>Bonato 1</h5>
+				<img src="bonato1.jpg" alt="Café da manhã">
+			</div>
+			<div>
+				<h5>Bonato 2</h5>
+				<img src="bonato2.jpg" alt="Café da manhã">
+			</div>
+			<div>
+				<h5>Cupom verde</h5>
+				<img src="cupom-verde.jpg" alt="Café da manhã">
+			</div>
+		</section>
+	</main>
+	<section id="cadastrar">
+		<h3>Cadastre-se e receba nossas ofertas!</h3>
+		<form>
+			<label for="nome">Nome:</label>
+			<input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" placeholder="Digite seu email" required>
+			<label for="telefone">Telefone:</label>
+			<input type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone" required>
+			<div>
+				<input type="checkbox" id="receberemail" name="receberemail">
+				<label for="receberemail" class="checkbox-label">Desejo receber ofertas por email.</label>
+			</div>
+			<div>
+				<input type="checkbox" id="recebersms" name="recebersms">
+				<label for="recebersms" class="checkbox-label">Desejo receber ofertas por SMS.</label>
+			</div>
+			<button type="submit">Cadastrar</button>
+		</form>
+	</section>
+	<footer>
+	</footer>
+</body>
+</html>

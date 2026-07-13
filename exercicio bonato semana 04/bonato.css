@@ -1,0 +1,213 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	display: grid;
+	grid-template-areas: 'header'
+						 'banner'
+						 'main'
+						 'cadastrar'
+						 'footer';
+	grid-template-rows: auto 300px auto auto auto;
+}
+
+#whatsapp {
+	position: fixed;
+	bottom: 50px;
+	right: 20px;
+	width: 80px;
+	height: 80px;
+}
+
+#whatsapp img {
+	width: 80px;
+	height: 80px;
+}
+
+header {
+	grid-area: header;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: #c1b2a4;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+header #barra-vermelha {
+	background-color: red;
+	flex: 1;
+	height: 40px;
+}
+
+header img {
+	width: 100px;
+	flex: 1;
+}
+
+header nav {
+	flex: 10;
+}
+
+header nav ul {
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: #228b22;
+}
+
+header nav ul li {
+	flex: 1;
+	text-align: center;
+}
+
+header nav ul li a {
+	text-decoration: none;
+	color: white;
+	display: block;
+	cursor: pointer;
+	height: 40px;
+	line-height: 40px;
+}
+
+header nav ul li a:hover {
+	background-color: #1F6721;	
+}
+
+#banner {
+	grid-area: banner;
+	background-color: blue;
+	background-image: url('banner.jpg');
+	background-size: cover;
+	background-position: center;
+}
+
+main {
+	grid-area: main;
+	background-color: white;
+}
+
+main h1{
+	text-align: left;
+	padding-left: 30px;
+	padding-top: 10px;
+	font-size: 30px;
+	color: #1DB32F;
+
+}
+
+main p{
+	text-align: left;
+	padding-left: 30px;
+	padding-top: 10px;
+	color: #333;
+	font-size: 18px;
+}
+
+#cadastrar {
+	grid-area: cadastrar;
+	background-image: url('fundo-cadastro.png');
+	background-size: cover;
+	background-position: center;
+	color: white;
+}
+
+#cadastrar h3 {
+	text-align: center;
+	padding: 20px;
+	font-size: 24px;
+	color: white;
+}
+
+#cadastrar form {
+	justify-content: center;
+	flex-direction: column;
+	width: 30%;
+	margin: 0 auto;
+}
+
+#cadastrar form label {
+	font-size: 18px;
+	margin-bottom: 5px;
+	display: block;
+}
+
+#cadastrar form input[type="text"],
+#cadastrar form input[type="email"],
+#cadastrar form input[type="tel"] {
+	margin-bottom: 15px;
+	height: 30px;
+	border: none;
+	border-radius: 5px;
+	padding: 20px;
+	font-size: 16px;
+	width: 100%;
+}
+
+#cadastrar form input[type="checkbox"] {
+	height: 20px;
+	width: 20px;
+}
+
+#receberemail, #recebersms{
+	float: left;
+	margin-right: 10px;	
+}
+
+#cadastrar form button {
+	background-color: #1DB32F;
+	color: white;
+	border-radius: 5px;
+	height: 40px;
+	font-size: 18px;
+	cursor: pointer;
+	border: 1px solid white;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+#cards {
+	display: flex;
+	justify-content: space-evenly;
+	padding: 30px;
+	gap: 30px;
+}
+
+#cards div {
+	background-color: white;
+	flex: 1;
+	text-align: center;
+	box-shadow: 5px 0px 40px rgba(0, 0, 0, .3);
+}
+
+#cards div img {
+	width: 109px;
+	height: 150px;
+	padding: 10px;
+}
+
+#cards div h5 {
+	background-color: #E50808;
+	height: 50px;
+	color: white;
+	line-height: 50px;
+	font-size: 18px;
+}
+
+footer {
+	grid-area: footer;
+}
+
+footer div {
+	text-align: center;
+	padding: 20px;
+	font-size: 20px;
+	background-color: black;
+	color: white;
+}
