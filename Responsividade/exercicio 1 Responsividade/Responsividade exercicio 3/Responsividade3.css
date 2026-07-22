@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: grid;
+    grid-template-areas: 'header'
+                         'nav'
+                         'main'
+                         'footer';
+    grid-template-rows: auto auto auto 3%;
+}
+
+.banner {
+    grid-area: header;
+    background-image: url('banner-desktop.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.banner h1 {
+    font-size: 2.5em;
+    color: #bf0132;
+    background-color: rgba(180, 243, 231, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.menu {
+    grid-area: nav;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    background-color: #597f59;
+}
+
+.menu li {
+    border-right: 1px solid white;
+    flex: 1;
+    text-align: center;
+}
+
+.menu li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    line-height: 3em;
+}
+
+.menu li a:hover {
+    background-color: #003b00;
+    color: #6ad06a; /* Amarelo no hover */
+}
+
+.conteudo-principal {
+    grid-area: main;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #597f59;
+    border-bottom: 2px solid #f30000;
+    padding-bottom: 10px;
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.item-galeria {
+    width: 32%;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.galeria img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4 / 3;
+}
+
+.item-galeria p {
+    padding: 10px;
+    background-color: #ffef00;
+    text-align: center;
+}
+
+video {    
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.rodape {
+    grid-area: footer;
+    background-color: #008000;
+    color: white;
+    text-align: center;
+    border-top: 5px solid #FF0000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 992px) {
+    .banner h1 {
+        font-size: 2em;
+    }
+
+    .item-galeria {
+        width: 49%;
+    }
+}
+
+@media (max-width: 576px) {
+
+    body {
+        grid-template-rows: auto auto auto 2%;
+    }
+    .banner {
+        background-image: url('banner-mobile.jpg'); 
+    }
+
+    .banner h1 {
+        font-size: 1.8em;
+    }
+
+    .menu ul {
+        flex-direction: column; /* Menu vertical */
+        width: 100%;
+        padding: 0;
+    }
+
+    .menu li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .menu li:last-child {
+        border-bottom: none;
+    }
+
+    .item-galeria {
+        width: 100%;
+    }
+
+    .conteudo-principal {
+        padding: 0 10px;
+    }
+}

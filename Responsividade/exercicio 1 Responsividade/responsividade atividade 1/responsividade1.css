@@ -1,0 +1,147 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	height: 100vh;
+	width: 100%;
+	display: grid;
+	grid-template-areas: 'header header header header header header'
+	                     'nav main main main main aside'
+	                     'footer footer footer footer footer footer';
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 15% auto 10%;
+	background-color: white;
+	gap: 10px;
+	padding: 10px;
+}
+
+header {
+	grid-area: header;
+	background-color: rgb(78, 61, 171);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+header h1 {
+	text-align: center;
+	color: white;
+}
+
+nav {
+	grid-area: nav;
+}
+
+nav ul {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+nav ul li {
+	text-align: center;
+	background-color: lightblue;
+	border-bottom: 1px solid white;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	display: block;
+	padding: 10px;
+}
+
+nav ul li a:hover {
+	background-color: deepskyblue;
+	color: white;
+}
+
+main {
+	grid-area: main;
+	padding: 10px;
+}
+
+p{
+	text-align: justify;
+	margin: 10px 10px 0 0;
+}
+
+main img {
+	max-width: 100%;
+	height: auto;
+	margin: 10px auto;
+	display: block;
+}
+
+aside {
+	grid-area: aside;
+	background-color: rgb(255, 235, 235);
+	padding: 10px;
+	border: 3px solid darkred;
+}
+
+footer {
+	grid-area: footer;
+	background-color: lightgray;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+footer p {
+	text-align: center;
+	font-weight: bold;
+	margin: 0;
+}
+
+@media screen and (max-width: 932px) and (orientation: portrait) {
+  body {
+	grid-template-areas: 
+	  'header header header header header header'
+	  'nav nav nav nav nav nav'
+	  'main main main main main main'
+	  'aside aside aside aside aside aside'
+	  'footer footer footer footer footer footer';
+	grid-template-rows: 10% auto auto auto 5%;
+  }	
+}
+
+@media screen and (max-width: 932px) and (orientation: landscape) {
+  body {
+	grid-template-areas: 
+	  'header header header header header header'
+	  'nav nav nav nav nav nav'
+	  'main main main main main main'
+	  'aside aside aside aside aside aside'
+	  'footer footer footer footer footer footer';
+	grid-template-rows: 15% auto auto auto 10%;
+  }	
+  
+  nav ul {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	gap: 2px
+	}
+
+	nav ul li {
+		flex: 1;
+		text-align: center;
+		background-color: lightblue;
+	}
+}
+
+@media screen and (min-width: 1920px) {
+  body{
+	grid-template-areas: 'header header header header header header'
+	                     'nav main main main main aside'
+	                     'footer footer footer footer footer footer';
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 8% auto 5%;
+  }
+}

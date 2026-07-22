@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formulário com diferentes tipos de campos em HTML</title>
+    <link rel="stylesheet" href="formulario.css" />
+  </head>
+  <body>
+    <h1>Formulario</h1>
+
+    <form action="/enviar" method="post" enctype="multipart/form-data">
+      <!-- 2. Estrutura Básica de um Formulário -->
+      <!-- O formulário começa aqui com action e method -->
+
+      <!-- 3. Campos de Entrada de Texto -->
+      <!-- Campos de texto, senha e email com labels -->
+      <h2>Suas Informações Pessoais</h2>
+
+      <label for="nome">Nome:</label>
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        placeholder="Digite seu nome"
+        required
+        maxlength="50"
+      />
+
+      <label for="email">E-mail:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="exemplo@gmail.com"
+        required
+      />
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required />
+
+      <!-- 4. Áreas de Texto -->
+      <!-- Uso da tag textarea -->
+
+      <!-- 5. Botões de Opção e Caixas de Seleção -->
+      <!-- Botões de opção (radio) e caixas de seleção (checkbox) -->
+      <h2>Preferências</h2>
+
+      <p>Escolaridade:</p>
+      <input type="radio" id="fundamental" name="escolaridade" value="fundamental" />
+      <label class="secundariolateral" for="fundamental">Fundamental</label>
+      <input type="radio" id="medio" name="escolaridade" value="medio" />
+      <label class="secundariolateral" for="medio">Médio</label>
+      <input type="radio" id="graduacao" name="escolaridade" value="graduacao" />
+      <label class="secundariolateral" for="graduacao">Graduação</label>
+      <input type="radio" id="pos" name="escolaridade" value="pos" />
+      <label class="secundariolateral" for="pos">Pós-Graduação</label>
+
+      <p>Interesses:</p>
+      <input type="checkbox" id="musica" name="interesses" value="musica" />
+      <label class="secundariolateral" for="musica">Música</label>
+
+      <input type="checkbox" id="esporte" name="interesses" value="esporte" />
+      <label class="secundariolateral" for="esporte">Esporte</label>
+
+      <input type="checkbox" id="games" name="interesses" value="games" />
+      <label class="secundariolateral" for="games">Games</label>
+
+      <input type="checkbox" id="viagem" name="interesses" value="Viagem" />
+      <label class="secundariolateral" for="viagem">Viagem</label>
+      <!-- 6. Listas de Seleção -->
+      <!-- Uso das tags select e option -->
+      <label for="cidade">Cidade:</label>
+      <select id="cidade" name="cidade">
+        <option value="0">Selecione sua cidade</option>
+        <option value="1">Charqueadas</option>
+        <option value="2">São Jerônimo</option>
+        <option value="3">Porto Alegre</option>
+        <option value="4">Butiá</option>
+        <option value="5">Arroio dos Ratos</option>
+        <option value="6">Triunfo</option>
+        <option value="-1">Outra</option>
+      </select>
+
+      <!-- 8. Novos Tipos de Input em HTML5 -->
+      <!-- Campos com validação adicional -->
+      <h2>Informações Adicionais</h2>
+
+      <label class="lateral" for="idade">Idade (entre 0 e 120):</label>
+      <input type="number" id="idade" name="idade" min="0" max="120" required />
+
+      <label class="lateral" for="telefone">Telefone:</label>
+      <input
+        type="tel"
+        id="telefone"
+        name="telefone"
+        pattern="([0-9]{2})[0-9]{5}-[0-9]{4}"
+        placeholder="Exemplo: (11)91234-5678"
+        title="Formato esperado: (11)91234-5678"
+      />
+
+      <label for="site">Website:</label>
+      <input
+        type="url"
+        id="site"
+        name="site"
+        placeholder="https://www.seusite.com"
+      />
+
+      <!-- Campos de data, hora, número e cor -->
+      <label class="lateral" for="data_nascimento">Data de Nascimento:</label>
+      <input type="date" id="data_nascimento" name="data_nascimento" />
+
+      <label class="lateral" for="hora_contato">Horário Preferido para Contato:</label>
+      <input type="time" id="hora_contato" name="hora_contato" />
+
+
+      <label class="lateral" for="cor_favorita">Cor Favorita:</label>
+      <input type="color" id="cor_favorita" name="cor_favorita" />
+
+      <!-- 9. Envio de Arquivos -->
+      <!-- Campo para upload de arquivos -->
+      <h2>Envio de Arquivos</h2>
+
+      <label for="arquivo">Anexar Arquivo (PDF ou DOCX):</label>
+      <input type="file" id="arquivo" name="arquivo" accept=".pdf, .docx" />
+
+      <label for="fotos">Envie suas Fotos:</label>
+      <input type="file" id="fotos" name="fotos" accept="image/*" multiple />
+
+      <!-- 10. Botões de Envio e Reset -->
+      <!-- Botões de submit e reset -->
+      <div>
+        <button type="submit">Enviar</button>
+        <button type="reset">Limpar</button>
+      </div>
+</html>
