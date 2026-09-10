@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 9</title>
+</head>
+<body>
+
+    <h1>Exercício 9 - Desconto</h1>
+
+    <label>Valor da mercadoria:</label>
+    <input type="number" id="valor" step="0.01">
+    <br><br>
+
+    <label>Porcentagem de desconto (%):</label>
+    <input type="number" id="desconto" step="0.01">
+    <br><br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcular() {
+            let valor = Number(document.getElementById("valor").value);
+            let desconto = Number(document.getElementById("desconto").value);
+
+            let valorDesconto = valor * desconto / 100;
+
+            let novoValor = valor - valorDesconto;
+
+            console.log("Valor original:", valor);
+            console.log("Desconto:", valorDesconto);
+            console.log("Novo valor:", novoValor);
+
+            document.getElementById("resultado").innerHTML =
+                "Valor original: R$ " + valor.toFixed(2) + "<br>" +
+                "Valor do desconto: R$ " + valorDesconto.toFixed(2) + "<br>" +
+                "<strong>Novo valor: R$ " + novoValor.toFixed(2) + "</strong>";
+        }
+    </script>
+
+</body>
+</html>

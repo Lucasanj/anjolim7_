@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3</title>
+</head>
+<body>
+
+    <h1>Exercício 3 - Combustível</h1>
+
+    <label>Comprimento da pista (metros):</label>
+    <input type="number" id="pista" step="0.01">
+    <br><br>
+
+    <label>Número total de voltas:</label>
+    <input type="number" id="voltas">
+    <br><br>
+
+    <label>Número de reabastecimentos:</label>
+    <input type="number" id="reabastecimentos">
+    <br><br>
+
+    <label>Consumo do carro (Km/L):</label>
+    <input type="number" id="consumo" step="0.01">
+    <br><br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcular() {
+            let pista = Number(document.getElementById("pista").value);
+            let voltas = Number(document.getElementById("voltas").value);
+            let reabastecimentos = Number(document.getElementById("reabastecimentos").value);
+            let consumo = Number(document.getElementById("consumo").value);
+
+            let voltasPrimeiroAbastecimento =
+                voltas / (reabastecimentos + 1);
+
+            let distanciaMetros =
+                pista * voltasPrimeiroAbastecimento;
+
+            let distanciaKm = distanciaMetros / 1000;
+
+            let litros = distanciaKm / consumo;
+
+            console.log("Voltas até o primeiro abastecimento:",
+                voltasPrimeiroAbastecimento);
+
+            console.log("Distância:", distanciaKm, "Km");
+            console.log("Litros necessários:", litros);
+
+            document.getElementById("resultado").innerHTML =
+                "Voltas até o primeiro abastecimento: " +
+                voltasPrimeiroAbastecimento.toFixed(2) + "<br>" +
+
+                "Distância percorrida: " +
+                distanciaKm.toFixed(2) + " Km<br>" +
+
+                "<strong>Litros necessários: " +
+                litros.toFixed(2) + " L</strong>";
+        }
+    </script>
+
+</body>
+</html>

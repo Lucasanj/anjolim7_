@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4</title>
+</head>
+<body>
+
+    <h1>Exercício 4 - Locadora de Vídeos</h1>
+
+    <label>Quantidade de fitas:</label>
+    <input type="number" id="fitas">
+    <br><br>
+
+    <label>Valor de cada aluguel:</label>
+    <input type="number" id="valor" step="0.01">
+    <br><br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcular() {
+            let fitas = Number(document.getElementById("fitas").value);
+            let valor = Number(document.getElementById("valor").value);
+
+            // Um terço das fitas é alugado por mês
+            let alugadasMes = fitas / 3;
+
+            // Faturamento mensal
+            let faturamentoMes = alugadasMes * valor;
+
+            // Faturamento anual
+            let faturamentoAnual = faturamentoMes * 12;
+
+            // Um décimo das fitas alugadas atrasam
+            let fitasAtrasadas = alugadasMes / 10;
+
+            // Multa de 10%
+            let multaPorFita = valor * 10 / 100;
+
+            // Valor das multas por mês
+            let multasMes = fitasAtrasadas * multaPorFita;
+
+            // Fitas que estragam durante o ano
+            let fitasEstragadas = fitas * 2 / 100;
+
+            // Fitas compradas para reposição
+            let fitasReposicao = fitas * 1 / 10;
+
+            // Quantidade final
+            let fitasFinal = fitas - fitasEstragadas + fitasReposicao;
+
+            console.log("Faturamento anual:", faturamentoAnual);
+            console.log("Multas por mês:", multasMes);
+            console.log("Fitas no final do ano:", fitasFinal);
+
+            document.getElementById("resultado").innerHTML =
+                "<strong>a) Faturamento anual:</strong> R$ " +
+                faturamentoAnual.toFixed(2) + "<br><br>" +
+
+                "<strong>b) Valor das multas por mês:</strong> R$ " +
+                multasMes.toFixed(2) + "<br><br>" +
+
+                "<strong>c) Fitas no final do ano:</strong> " +
+                fitasFinal.toFixed(0);
+        }
+    </script>
+
+</body>
+</html>

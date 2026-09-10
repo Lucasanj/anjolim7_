@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 8</title>
+</head>
+<body>
+
+    <h1>Exercício 8</h1>
+
+    <label>Valor da hora aula:</label>
+    <input type="number" id="valorHora" step="0.01">
+    <br><br>
+
+    <label>Número de horas aulas no mês:</label>
+    <input type="number" id="horas">
+    <br><br>
+
+    <button onclick="calcular()">Calcular salário</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcular() {
+            let valorHora = Number(document.getElementById("valorHora").value);
+            let horas = Number(document.getElementById("horas").value);
+
+            let salarioBruto = valorHora * horas;
+            let salarioLiquido = salarioBruto - (salarioBruto * 11 / 100);
+
+            console.log("Salário bruto:", salarioBruto);
+            console.log("Salário líquido:", salarioLiquido);
+
+            document.getElementById("resultado").innerHTML =
+                "Salário bruto: R$ " + salarioBruto.toFixed(2) + "<br>" +
+                "Salário líquido: R$ " + salarioLiquido.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
