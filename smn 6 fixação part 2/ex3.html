@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 3</title>
+</head>
+<body>
+
+<script>
+    let comprimentoPista = Number(prompt("Digite o comprimento da pista em metros:"));
+    let totalVoltas = Number(prompt("Digite o número total de voltas:"));
+    let reabastecimentos = Number(prompt("Digite o número de reabastecimentos desejados:"));
+    let consumo = Number(prompt("Digite o consumo do carro em Km/L:"));
+
+    let voltasPorTrecho = totalVoltas / (reabastecimentos + 1);
+
+    let distanciaMetros = comprimentoPista * voltasPorTrecho;
+    let distanciaKm = distanciaMetros / 1000;
+
+    let litrosNecessarios = distanciaKm / consumo;
+
+    console.log("Litros necessários até o primeiro reabastecimento: " 
+        + litrosNecessarios.toFixed(2) + " L");
+</script>
+
+</body>
+</html>

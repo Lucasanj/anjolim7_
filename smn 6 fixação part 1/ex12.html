@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 12</title>
+</head>
+<body>
+
+    <h1>Exercício 12</h1>
+
+    <label>Temperatura em Celsius:</label>
+    <input type="number" id="celsius" step="0.01">
+
+    <button onclick="converter()">Converter</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function converter() {
+            let celsius =
+                Number(document.getElementById("celsius").value);
+
+            let fahrenheit = (celsius * 9 / 5) + 32;
+
+            console.log("Fahrenheit:", fahrenheit);
+
+            document.getElementById("resultado").innerHTML =
+                celsius + " °C = " +
+                fahrenheit.toFixed(2) + " °F";
+        }
+    </script>
+
+</body>
+</html>

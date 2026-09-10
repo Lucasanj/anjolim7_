@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 10</title>
+</head>
+<body>
+
+<script>
+    let numero1 = Number(prompt("Digite o primeiro número:"));
+    let numero2 = Number(prompt("Digite o segundo número:"));
+    let numero3 = Number(prompt("Digite o terceiro número:"));
+
+// Primeiro número
+    if (numero1 > 0) {
+        console.log("Primeiro número multiplicado por 10: " + (numero1 * 10));
+    } else {
+        console.log("Quadrado do primeiro número: " + (numero1 ** 2));
+    }
+
+// Segundo número
+    if (numero2 < 0) {
+        console.log("Número NEGATIVO!");
+    }
+
+// Terceiro número
+    if (numero3 < numero2) {
+        let diferenca = numero2 - numero3;
+        console.log("Diferença entre o segundo e o terceiro número: " + diferenca);
+    } else {
+        console.log("Terceiro número + 1: " + (numero3 + 1));
+    }
+</script>
+
+</body>
+</html>

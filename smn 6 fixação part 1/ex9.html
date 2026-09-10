@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 9</title>
+</head>
+<body>
+
+    <h1>Exercício 9</h1>
+
+    <label>Valor original da prestação:</label>
+    <input type="number" id="valor" step="0.01">
+
+    <br><br>
+
+    <label>Tempo em atraso (meses):</label>
+    <input type="number" id="tempo">
+
+    <br><br>
+
+    <label>Taxa de juros (%):</label>
+    <input type="number" id="taxa" step="0.01">
+
+    <br><br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcular() {
+            let valor = Number(document.getElementById("valor").value);
+            let tempo = Number(document.getElementById("tempo").value);
+            let taxa = Number(document.getElementById("taxa").value);
+
+            let prestacao =
+                valor + (valor * (taxa / 100) * tempo);
+
+            console.log("Prestação:", prestacao);
+
+            document.getElementById("resultado").innerHTML =
+                "Valor da prestação em atraso: R$ " +
+                prestacao.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

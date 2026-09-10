@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 4</title>
+</head>
+<body>
+
+    <h1>Exercício 4</h1>
+
+    <label>Digite um número:</label>
+    <input type="number" id="numero">
+
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcular() {
+            let numero = Number(document.getElementById("numero").value);
+
+            let antecessor = numero - 1;
+            let sucessor = numero + 1;
+
+            console.log("Antecessor:", antecessor);
+            console.log("Sucessor:", sucessor);
+
+            document.getElementById("resultado").innerHTML =
+                "Antecessor: " + antecessor + "<br>" +
+                "Número: " + numero + "<br>" +
+                "Sucessor: " + sucessor;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 9</title>
+</head>
+<body>
+
+<script>
+    let quantidadeCompetidores = Number(
+        prompt("Digite a quantidade de competidores:")
+    );
+
+    let maiorArremesso = 0;
+    let competidorMaiorArremesso = 0;
+
+    let maiorMedia = 0;
+    let competidorMaiorMedia = 0;
+
+    for (let competidor = 1;
+         competidor <= quantidadeCompetidores;
+         competidor++) {
+
+        let soma = 0;
+
+        console.log("Competidor " + competidor);
+
+        for (let arremesso = 1; arremesso <= 3; arremesso++) {
+
+            let distancia = Number(
+                prompt(
+                    "Competidor " + competidor +
+                    " - Digite a distância do arremesso " + arremesso + ":"
+                )
+            );
+
+            while (distancia < 0 || isNaN(distancia)) {
+                distancia = Number(
+                    prompt("Distância inválida! Digite novamente:")
+                );
+            }
+
+            soma += distancia;
+
+            // Verifica o maior arremesso individual
+            if (distancia > maiorArremesso) {
+                maiorArremesso = distancia;
+                competidorMaiorArremesso = competidor;
+            }
+        }
+
+        // Calcula a média dos 3 arremessos
+        let media = soma / 3;
+
+        console.log("Média do competidor: " + media.toFixed(2));
+
+        // Verifica a maior média
+        if (media > maiorMedia) {
+            maiorMedia = media;
+            competidorMaiorMedia = competidor;
+        }
+    }
+
+    console.log("================================");
+    console.log("RESULTADO DO CAMPEONATO");
+    console.log("================================");
+
+    console.log(
+        "Maior arremesso: " +
+        maiorArremesso.toFixed(2) +
+        " metros"
+    );
+
+    console.log(
+        "Competidor do maior arremesso: " +
+        competidorMaiorArremesso
+    );
+
+    console.log(
+        "Maior média: " +
+        maiorMedia.toFixed(2) +
+        " metros"
+    );
+
+    console.log(
+        "Competidor da maior média: " +
+        competidorMaiorMedia
+    );
+</script>
+
+</body>
+</html>

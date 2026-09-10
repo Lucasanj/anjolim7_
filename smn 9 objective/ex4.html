@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#conteudo {
+			background-color: lightgray;
+			padding: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="conteudo">
+	</div>
+	<script>
+		var div = document.getElementById("conteudo");
+		var h2 = document.createElement("h2");
+		h2.textContent = "Curso de JavaScript";
+		var p = document.createElement("p");
+		p.textContent = "Aprendendo a manipular o DOM.";
+		var b = document.createElement("button");
+		b.textContent = "Continuar";
+		div.append(h2);
+		div.append(p);
+		div.append(b);
+	</script>
+</body>
+</html>

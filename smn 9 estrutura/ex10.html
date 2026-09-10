@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 10</title>
+</head>
+<body>
+
+<script>
+    let B = [];
+
+    // Ler os 9 valores
+    for (let i = 0; i < 9; i++) {
+        B[i] = Number(prompt("Digite B[" + i + "]:"));
+    }
+
+    let X = Number(prompt("Digite o valor X:"));
+
+    // Deslocar os elementos para a direita
+    for (let i = 8; i >= 0; i--) {
+        B[i + 1] = B[i];
+    }
+
+    // Inserir X na primeira posição
+    B[0] = X;
+
+    console.log("Vetor B após a inserção:");
+    console.log(B);
+</script>
+
+</body>
+</html>

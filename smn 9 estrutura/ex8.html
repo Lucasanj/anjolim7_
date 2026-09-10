@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 8</title>
+</head>
+<body>
+
+<script>
+    let Q = [];
+
+    // Preenchimento com validação
+    for (let i = 0; i < 10; i++) {
+
+        let valor = Number(prompt("Digite um valor positivo para Q[" + i + "]:"));
+
+        while (valor <= 0 || isNaN(valor)) {
+            valor = Number(prompt("Valor inválido! Digite um número positivo:"));
+        }
+
+        Q[i] = valor;
+    }
+
+    let maior = Q[0];
+    let indiceMaior = 0;
+
+    for (let i = 1; i < 10; i++) {
+
+        if (Q[i] > maior) {
+            maior = Q[i];
+            indiceMaior = i;
+        }
+    }
+
+    console.log("Maior elemento: " + maior);
+    console.log("Índice do maior elemento: " + indiceMaior);
+</script>
+
+</body>
+</html>

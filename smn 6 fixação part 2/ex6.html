@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 6</title>
+</head>
+<body>
+
+<script>
+    let empregados = Number(prompt("Digite o número de empregados:"));
+    let salarioMinimo = Number(prompt("Digite o valor do salário mínimo:"));
+    let precoCusto = Number(prompt("Digite o preço de custo de cada bicicleta:"));
+    let bicicletasVendidas = Number(prompt("Digite o número de bicicletas vendidas:"));
+
+    // Preço de venda com acréscimo de 50%
+    let precoVenda = precoCusto * 1.50;
+
+    // Receita total das vendas
+    let receitaTotal = precoVenda * bicicletasVendidas;
+
+    // Comissão total: 15% do preço de custo
+    let comissaoTotal = precoCusto * bicicletasVendidas * 0.15;
+
+    // Comissão dividida igualmente entre os empregados
+    let comissaoPorEmpregado = comissaoTotal / empregados;
+
+    // Salário de cada empregado
+    let salarioFinal = (2 * salarioMinimo) + comissaoPorEmpregado;
+
+    // Custo total das bicicletas
+    let custoTotal = precoCusto * bicicletasVendidas;
+
+    // Salários fixos de todos os empregados
+    let salariosTotais = 2 * salarioMinimo * empregados;
+
+    // Lucro líquido
+    let lucroLiquido = receitaTotal - custoTotal - salariosTotais - comissaoTotal;
+
+    console.log("Salário final de cada empregado: R$ " + salarioFinal.toFixed(2));
+    console.log("Lucro líquido da loja: R$ " + lucroLiquido.toFixed(2));
+</script>
+
+</body>
+</html>

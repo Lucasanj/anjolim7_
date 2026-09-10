@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 8</title>
+</head>
+<body>
+
+<script>
+    let altura = Number(prompt("Digite a altura da pessoa:"));
+
+    let maior = altura;
+    let menor = altura;
+
+    let continuar = window.confirm("Deseja informar outra altura?");
+
+    while (continuar) {
+
+        altura = Number(prompt("Digite a altura da pessoa:"));
+
+        if (altura > maior) {
+            maior = altura;
+        }
+
+        if (altura < menor) {
+            menor = altura;
+        }
+
+        continuar = window.confirm("Deseja informar outra altura?");
+    }
+
+    console.log("Maior altura: " + maior.toFixed(2) + " m");
+    console.log("Menor altura: " + menor.toFixed(2) + " m");
+</script>
+
+</body>
+</html>

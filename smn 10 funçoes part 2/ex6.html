@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 6 - Vogais e Consoantes</title>
+</head>
+<body>
+
+<script>
+    function ContaVogais(palavra) {
+
+        let quantidade = 0;
+        let vogais = "aeiouAEIOU";
+
+        for (let i = 0; i < palavra.length; i++) {
+
+            if (vogais.includes(palavra[i])) {
+                quantidade++;
+            }
+        }
+
+        return quantidade;
+    }
+
+
+    function ContaConsoantes(palavra) {
+
+        let quantidade = 0;
+        let vogais = "aeiouAEIOU";
+
+        for (let i = 0; i < palavra.length; i++) {
+
+            let caractere = palavra[i];
+
+            if (
+                /[a-zA-Z]/.test(caractere) &&
+                !vogais.includes(caractere)
+            ) {
+                quantidade++;
+            }
+        }
+
+        return quantidade;
+    }
+
+
+    let palavraMaiorVogais = "";
+    let maiorQuantidadeVogais = -1;
+
+    let palavraMaiorConsoantes = "";
+    let maiorQuantidadeConsoantes = -1;
+
+
+    for (let i = 1; i <= 10; i++) {
+
+        let palavra = prompt("Digite a " + i + "ª palavra:");
+
+        let quantidadeVogais = ContaVogais(palavra);
+        let quantidadeConsoantes = ContaConsoantes(palavra);
+
+
+        if (quantidadeVogais > maiorQuantidadeVogais) {
+            maiorQuantidadeVogais = quantidadeVogais;
+            palavraMaiorVogais = palavra;
+        }
+
+
+        if (quantidadeConsoantes > maiorQuantidadeConsoantes) {
+            maiorQuantidadeConsoantes = quantidadeConsoantes;
+            palavraMaiorConsoantes = palavra;
+        }
+    }
+
+
+    console.log("=== RESULTADO ===");
+
+    console.log(
+        "Palavra com maior quantidade de vogais: " +
+        palavraMaiorVogais
+    );
+
+    console.log(
+        "Quantidade de vogais: " +
+        maiorQuantidadeVogais
+    );
+
+    console.log(
+        "Palavra com maior quantidade de consoantes: " +
+        palavraMaiorConsoantes
+    );
+
+    console.log(
+        "Quantidade de consoantes: " +
+        maiorQuantidadeConsoantes
+    );
+</script>
+
+</body>
+</html>

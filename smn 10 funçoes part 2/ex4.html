@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 4 - Situação dos Alunos</title>
+</head>
+<body>
+
+<script>
+    function situacao(nota, frequencia) {
+
+        if (nota >= 6 && frequencia >= 75) {
+            return 1;
+        } else if (nota >= 6 && frequencia < 75) {
+            return 2;
+        } else if (nota < 6 && frequencia >= 75) {
+            return 3;
+        } else {
+            return 4;
+        }
+    }
+
+    let continuar = true;
+
+    while (continuar) {
+
+        let matricula = prompt("Digite o código de matrícula:");
+
+        let nota;
+
+        do {
+            nota = Number(prompt("Digite a nota final (0 a 10):"));
+
+            if (nota < 0 || nota > 10 || isNaN(nota)) {
+                alert("Nota inválida! Digite uma nota entre 0 e 10.");
+            }
+
+        } while (nota < 0 || nota > 10 || isNaN(nota));
+
+
+        let frequencia;
+
+        do {
+            frequencia = Number(
+                prompt("Digite a frequência (0 a 100):")
+            );
+
+            if (frequencia < 0 || frequencia > 100 || isNaN(frequencia)) {
+                alert("Frequência inválida! Digite um valor entre 0 e 100.");
+            }
+
+        } while (frequencia < 0 || frequencia > 100 || isNaN(frequencia));
+
+
+        let resultado = situacao(nota, frequencia);
+
+        console.log("Matrícula: " + matricula);
+        console.log("Nota: " + nota);
+        console.log("Frequência: " + frequencia + "%");
+        console.log("Código da situação: " + resultado);
+
+        if (resultado === 1) {
+            console.log("Aluno aprovado por nota e frequência.");
+        } else if (resultado === 2) {
+            console.log("Aluno aprovado por nota e reprovado por frequência.");
+        } else if (resultado === 3) {
+            console.log("Aluno reprovado por nota e aprovado por frequência.");
+        } else {
+            console.log("Aluno reprovado por nota e frequência.");
+        }
+
+        continuar = confirm("Deseja cadastrar outro aluno?");
+    }
+
+    console.log("Programa encerrado.");
+</script>
+
+</body>
+</html>

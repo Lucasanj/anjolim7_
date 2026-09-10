@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 2</title>
+</head>
+<body>
+
+<script>
+    let maiorMedia = 0;
+
+    for (let i = 1; i <= 10; i++) {
+
+        let nota1 = Number(
+            prompt("Aluno " + i + " - Digite a nota do 1º semestre:")
+        );
+
+        let nota2 = Number(
+            prompt("Aluno " + i + " - Digite a nota do 2º semestre:")
+        );
+
+        let media = (nota1 + nota2) / 2;
+
+        let mediaDuasCasas = media.toFixed(2);
+        let mediaCima = Math.ceil(media);
+        let mediaBaixo = Math.floor(media);
+        let mediaProxima = Math.round(media);
+
+        console.log("=== ALUNO " + i + " ===");
+        console.log("Média: " + mediaDuasCasas);
+        console.log("Arredondada para cima: " + mediaCima);
+        console.log("Arredondada para baixo: " + mediaBaixo);
+        console.log("Inteiro mais próximo: " + mediaProxima);
+
+        if (mediaProxima > maiorMedia) {
+            maiorMedia = mediaProxima;
+        }
+    }
+
+    console.log("==========================");
+    console.log("Maior média arredondada da turma: " + maiorMedia);
+</script>
+
+</body>
+</html>

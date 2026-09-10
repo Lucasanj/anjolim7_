@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 1</title>
+</head>
+<body>
+
+<script>
+    let continuar = true;
+
+    while (continuar) {
+
+        let nome = prompt("Digite o nome do aluno:");
+
+        let nota1 = Number(prompt("Digite a primeira nota (0 a 10):"));
+
+        while (nota1 < 0 || nota1 > 10 || isNaN(nota1)) {
+            nota1 = Number(prompt("Nota inválida! Digite novamente (0 a 10):"));
+        }
+
+        let nota2 = Number(prompt("Digite a segunda nota (0 a 10):"));
+
+        while (nota2 < 0 || nota2 > 10 || isNaN(nota2)) {
+            nota2 = Number(prompt("Nota inválida! Digite novamente (0 a 10):"));
+        }
+
+        let media = (nota1 + nota2) / 2;
+
+        console.log("Nome: " + nome);
+        console.log("Média: " + media.toFixed(2));
+
+        continuar = window.confirm("Deseja inserir outro estudante?");
+    }
+
+    console.log("Programa encerrado.");
+</script>
+
+</body>
+</html>

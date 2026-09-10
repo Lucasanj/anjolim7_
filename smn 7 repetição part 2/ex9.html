@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 9</title>
+</head>
+<body>
+
+<script>
+    let total = 0;
+    let valorProduto;
+
+    console.log("=== SISTEMA DE VENDAS ===");
+
+    valorProduto = Number(
+        prompt("Digite o valor do produto (ou 0 para finalizar):")
+    );
+
+    while (valorProduto > 0) {
+
+        total += valorProduto;
+
+        valorProduto = Number(
+            prompt("Digite o valor do produto (ou 0 para finalizar):")
+        );
+    }
+
+    console.log("=== RESUMO DA COMPRA ===");
+    console.log("Valor total: R$ " + total.toFixed(2));
+
+    console.log("=== CONDIÇÕES DE PAGAMENTO ===");
+
+    if (total < 500) {
+
+        console.log("Apenas pagamento à vista");
+
+    } else {
+
+        console.log("Parcelamento em até 12x sem juros");
+        console.log("OPÇÕES DE PARCELAMENTO:");
+
+        for (let parcelas = 2; parcelas <= 12; parcelas++) {
+
+            let valorParcela = total / parcelas;
+
+            console.log(
+                parcelas + "x de R$ " + valorParcela.toFixed(2)
+            );
+        }
+    }
+</script>
+
+</body>
+</html>

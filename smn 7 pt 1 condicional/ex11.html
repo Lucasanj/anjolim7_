@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 11</title>
+</head>
+<body>
+
+<script>
+    let anoFabricacao = Number(prompt("Digite o ano de fabricação do carro:"));
+    let precoTabela = Number(prompt("Digite o preço de tabela do carro:"));
+
+    let imposto;
+
+    if (anoFabricacao <= 1990) {
+        imposto = precoTabela * 0.10;
+    } else {
+        imposto = precoTabela * 0.15;
+    }
+
+    console.log("Imposto a ser pago: R$ " + imposto.toFixed(2));
+</script>
+
+</body>
+</html>

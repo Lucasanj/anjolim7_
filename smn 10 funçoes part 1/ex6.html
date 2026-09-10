@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 6</title>
+</head>
+<body>
+
+<script>
+    let maiorFrase = "";
+    let maiorQuantidadePalavras = 0;
+
+    for (let i = 1; i <= 10; i++) {
+
+        let frase = prompt("Digite a frase " + i + ":");
+
+        let palavras = frase.trim().split(/\s+/);
+        let quantidadePalavras = palavras.length;
+
+        if (quantidadePalavras > maiorQuantidadePalavras) {
+            maiorQuantidadePalavras = quantidadePalavras;
+            maiorFrase = frase;
+        }
+    }
+
+    console.log("=== RESULTADO ===");
+    console.log("Frase com mais palavras:");
+    console.log(maiorFrase);
+    console.log("Quantidade de palavras: " + maiorQuantidadePalavras);
+</script>
+
+</body>
+</html>

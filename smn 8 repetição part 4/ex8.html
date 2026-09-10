@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 8</title>
+</head>
+<body>
+
+<script>
+    let quantidadeCompetidores = Number(
+        prompt("Digite a quantidade de competidores:")
+    );
+
+    let maiorArremesso = 0;
+    let competidorMaiorArremesso = 0;
+
+    for (let competidor = 1;
+         competidor <= quantidadeCompetidores;
+         competidor++) {
+
+        console.log("Competidor " + competidor);
+
+        for (let arremesso = 1; arremesso <= 3; arremesso++) {
+
+            let distancia = Number(
+                prompt(
+                    "Competidor " + competidor +
+                    " - Digite a distância do arremesso " + arremesso + ":"
+                )
+            );
+
+            while (distancia < 0 || isNaN(distancia)) {
+                distancia = Number(
+                    prompt("Distância inválida! Digite novamente:")
+                );
+            }
+
+            if (distancia > maiorArremesso) {
+                maiorArremesso = distancia;
+                competidorMaiorArremesso = competidor;
+            }
+        }
+    }
+
+    console.log("Maior arremesso: " + maiorArremesso + " metros");
+    console.log(
+        "Competidor que realizou o maior arremesso: " +
+        competidorMaiorArremesso
+    );
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 15</title>
+</head>
+<body>
+
+    <h1>Exercício 15 - Área do Círculo</h1>
+
+    <label>Digite o raio do círculo:</label>
+    <input type="number" id="raio" step="0.01">
+
+    <button onclick="calcular()">Calcular área</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcular() {
+            let raio = Number(document.getElementById("raio").value);
+
+            let area = Math.PI * Math.pow(raio, 2);
+
+            console.log("Raio:", raio);
+            console.log("Área:", area);
+
+            document.getElementById("resultado").innerHTML =
+                "Raio: " + raio + "<br>" +
+                "Área do círculo: " + area.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

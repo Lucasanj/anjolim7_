@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 6</title>
+</head>
+<body>
+
+<script>
+    let anoNascimento = Number(prompt("Digite o ano de nascimento:"));
+    let anoAtual = Number(prompt("Digite o ano atual:"));
+
+    if (anoNascimento > anoAtual) {
+        console.log("Não é possível calcular a idade, pois o ano de nascimento ainda não aconteceu.");
+    } else {
+        let idade = anoAtual - anoNascimento;
+
+        console.log("A idade da pessoa é: " + idade + " anos.");
+    }
+</script>
+
+</body>
+</html>

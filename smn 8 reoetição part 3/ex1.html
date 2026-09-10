@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 1</title>
+</head>
+<body>
+
+<script>
+    let aprovados = 0;
+    let reprovados = 0;
+    let maiorNota;
+    let menorNota;
+
+    for (let i = 1; i <= 20; i++) {
+
+        let nota = Number(prompt("Digite a nota final do aluno " + i + ":"));
+
+        // Verifica aprovação ou reprovação
+        if (nota >= 6) {
+            aprovados++;
+        } else {
+            reprovados++;
+        }
+
+        // Primeiro valor é usado para iniciar maior e menor
+        if (i === 1) {
+            maiorNota = nota;
+            menorNota = nota;
+        } else {
+
+            if (nota > maiorNota) {
+                maiorNota = nota;
+            }
+
+            if (nota < menorNota) {
+                menorNota = nota;
+            }
+        }
+    }
+
+    console.log("Quantidade de aprovados: " + aprovados);
+    console.log("Quantidade de reprovados: " + reprovados);
+    console.log("Maior nota: " + maiorNota);
+    console.log("Menor nota: " + menorNota);
+</script>
+
+</body>
+</html>

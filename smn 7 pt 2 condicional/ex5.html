@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 5</title>
+</head>
+<body>
+
+<script>
+    let anoNascimento = Number(prompt("Digite o ano de nascimento:"));
+    let anoAtual = Number(prompt("Digite o ano atual:"));
+
+    let idade = anoAtual - anoNascimento;
+
+    if (idade < 0 || idade > 125) {
+        console.log("Ano de nascimento inválido.");
+    } else {
+        console.log("A idade da pessoa é: " + idade + " anos.");
+    }
+</script>
+
+</body>
+</html>

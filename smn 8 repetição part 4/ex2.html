@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 2</title>
+</head>
+<body>
+
+<script>
+    let grenais = 0;
+    let vitoriasInter = 0;
+    let vitoriasGremio = 0;
+    let empates = 0;
+
+    let continuar = true;
+
+    while (continuar) {
+
+        let golsInter = Number(prompt("Digite os gols do Inter:"));
+
+        while (golsInter < 0 || isNaN(golsInter)) {
+            golsInter = Number(prompt(
+                "Valor inválido! Digite novamente os gols do Inter:"
+            ));
+        }
+
+        let golsGremio = Number(prompt("Digite os gols do Grêmio:"));
+
+        while (golsGremio < 0 || isNaN(golsGremio)) {
+            golsGremio = Number(prompt(
+                "Valor inválido! Digite novamente os gols do Grêmio:"
+            ));
+        }
+
+        grenais++;
+
+        if (golsInter > golsGremio) {
+            vitoriasInter++;
+        } else if (golsGremio > golsInter) {
+            vitoriasGremio++;
+        } else {
+            empates++;
+        }
+
+        continuar = window.confirm("Deseja inserir outro GRENAL?");
+    }
+
+    console.log("Quantidade de GRENAIS: " + grenais);
+    console.log("Vitórias do Inter: " + vitoriasInter);
+    console.log("Vitórias do Grêmio: " + vitoriasGremio);
+    console.log("Empates: " + empates);
+
+    if (vitoriasInter > vitoriasGremio) {
+        console.log("O Inter venceu o maior número de GRENAIS.");
+    } else if (vitoriasGremio > vitoriasInter) {
+        console.log("O Grêmio venceu o maior número de GRENAIS.");
+    } else {
+        console.log("Empate no número de vitórias");
+    }
+</script>
+
+</body>
+</html>

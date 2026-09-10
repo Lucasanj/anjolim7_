@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.filme {
+			border: 1px solid #ccc;
+			padding: 10px;
+			margin-bottom: 10px;
+			background-color: lightgray;
+		}
+	</style>
+</head>
+<body>
+	<div id="app"></div>
+	<script>
+		var app = document.getElementById("app");
+		h1 = document.createElement("h1");
+		h1.textContent = "Minha lista de filmes";
+		app.append(h1);
+		var filmes = [
+						["O Poderoso Chefão","Uma família mafiosa luta para estabelecer sua supremacia nos Estados Unidos depois da Segunda Guerra Mundial. Uma tentativa de assassinato deixa o chefão Vito Corleone incapacitado e força os filhos Michael e Sonny a assumir os negócios."],
+						["A Origem","Um ladrão especializado em extrair segredos do subconsciente das pessoas é contratado para plantar uma ideia na mente de um alvo, mas enfrenta desafios inesperados."],
+						["Clube da Luta","Um homem insatisfeito com sua vida monótona forma um clube secreto de luta com um vendedor de sabonetes carismático, levando a consequências inesperadas."]
+					];
+		for(var i = 0; i < filmes.length; i++){
+			var div = document.createElement("div");
+			div.classList.add("filme");
+			var h2 = document.createElement("h2");
+			h2.textContent = filmes[i][0];
+			var p = document.createElement("p");
+			p.textContent = filmes[i][1];
+			div.append(h2);
+			div.append(p);
+			app.append(div);
+		}
+	</script>
+</body>
+</html>

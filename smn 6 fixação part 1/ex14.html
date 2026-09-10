@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 14</title>
+</head>
+<body>
+
+    <h1>Exercício 14 - Restaurante</h1>
+
+    <label>Valor gasto na refeição:</label>
+    <input type="number" id="valor" step="0.01">
+
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcular() {
+            let valor = Number(document.getElementById("valor").value);
+
+            let taxa = valor * 10 / 100;
+
+            let total = valor + taxa;
+
+            console.log("Taxa de serviço:", taxa);
+            console.log("Valor total:", total);
+
+            document.getElementById("resultado").innerHTML =
+                "Valor da refeição: R$ " + valor.toFixed(2) + "<br>" +
+                "Taxa de serviço (10%): R$ " + taxa.toFixed(2) + "<br>" +
+                "Valor total da conta: R$ " + total.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 10</title>
+</head>
+<body>
+
+    <h1>Exercício 10</h1>
+
+    <label>Salário mensal:</label>
+    <input type="number" id="salario" step="0.01">
+
+    <br><br>
+
+    <label>Percentual de reajuste (%):</label>
+    <input type="number" id="reajuste" step="0.01">
+
+    <br><br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcular() {
+            let salario = Number(document.getElementById("salario").value);
+            let reajuste = Number(document.getElementById("reajuste").value);
+
+            let valorReajuste = salario * reajuste / 100;
+
+            let novoSalario = salario + valorReajuste;
+
+            console.log("Novo salário:", novoSalario);
+
+            document.getElementById("resultado").innerHTML =
+                "Salário atual: R$ " + salario.toFixed(2) + "<br>" +
+                "Valor do reajuste: R$ " + valorReajuste.toFixed(2) + "<br>" +
+                "Novo salário: R$ " + novoSalario.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

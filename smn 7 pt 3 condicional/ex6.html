@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 6</title>
+</head>
+<body>
+
+<script>
+    let numero1 = Number(prompt("Digite o primeiro número:"));
+    let numero2 = Number(prompt("Digite o segundo número:"));
+    let numero3 = Number(prompt("Digite o terceiro número:"));
+
+    let numeros = [numero1, numero2, numero3];
+
+    numeros.sort(function(a, b) {
+        return b - a;
+    });
+
+    console.log("Ordem decrescente: " + numeros.join(", "));
+</script>
+
+</body>
+</html>

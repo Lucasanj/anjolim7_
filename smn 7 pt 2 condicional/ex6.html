@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 6</title>
+</head>
+<body>
+
+<script>
+    let numero1 = Number(prompt("Digite o primeiro número:"));
+    let numero2 = Number(prompt("Digite o segundo número:"));
+    let numero3 = Number(prompt("Digite o terceiro número:"));
+
+    let menor;
+
+    if (numero1 <= numero2 && numero1 <= numero3) {
+        menor = numero1;
+    } else if (numero2 <= numero1 && numero2 <= numero3) {
+        menor = numero2;
+    } else {
+        menor = numero3;
+    }
+
+    console.log("O menor número é: " + menor);
+
+    if (menor > 100) {
+        console.log("O menor número é maior do que 100");
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 7</title>
+</head>
+<body>
+
+<script>
+    let A = Number(prompt("Digite o valor de A:"));
+    let B = Number(prompt("Digite o valor de B:"));
+    let C = Number(prompt("Digite o valor de C:"));
+    let D = Number(prompt("Digite o valor de D:"));
+
+    if (
+        B > C &&
+        D > A &&
+        (C + D) > (A + B) &&
+        C > 0 &&
+        D > 0 &&
+        A % 2 === 0
+    ) {
+        console.log("Valores aceitos");
+    } else {
+        console.log("Valores não aceitos");
+    }
+</script>
+
+</body>
+</html>

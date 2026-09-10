@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 4</title>
+</head>
+<body>
+
+<script>
+    let numeroSorteado = Math.floor(Math.random() * 50) + 1;
+    let acertou = false;
+
+    console.log("=== JOGO DE ADIVINHAÇÃO ===");
+    console.log("Tente descobrir o número entre 1 e 50!");
+
+    for (let tentativa = 1; tentativa <= 5; tentativa++) {
+
+        let numero = Number(
+            prompt("Tentativa " + tentativa + " de 5. Digite seu palpite:")
+        );
+
+        if (numero === numeroSorteado) {
+
+            acertou = true;
+
+            if (tentativa === 1) {
+                console.log("PARABÉNS! Você tem muita sorte!");
+            } else if (tentativa === 2) {
+                console.log("Ótimo! Foi por pouco!");
+            } else if (tentativa === 3) {
+                console.log("Muito bom!");
+            } else if (tentativa === 4) {
+                console.log("Beleza! Eu já estava tenso!");
+            } else if (tentativa === 5) {
+                console.log("Nos acréscimos!!!!!");
+            }
+
+            break;
+        }
+    }
+
+    if (!acertou) {
+        console.log("Azar no jogo, sorte no amor!");
+        console.log("O número sorteado era: " + numeroSorteado);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 4</title>
+</head>
+<body>
+
+<script>
+    let quantidadePacientes = Number(
+        prompt("Digite a quantidade de pacientes atendidos:")
+    );
+
+    let nomeMaisDistante = "";
+    let maiorDistancia = 0;
+    let pacientesNoPesoIdeal = 0;
+
+    for (let i = 1; i <= quantidadePacientes; i++) {
+
+        let nome = prompt("Digite o nome do paciente " + i + ":");
+
+        let pesoAtual = Number(
+            prompt("Digite o peso atual de " + nome + " em kg:")
+        );
+
+        let pesoIdeal = Number(
+            prompt("Digite o peso ideal de " + nome + " em kg:")
+        );
+
+        // Verifica se está no peso ideal
+        if (pesoAtual === pesoIdeal) {
+            pacientesNoPesoIdeal++;
+        }
+
+        // Calcula a distância do peso ideal
+        let distancia = Math.abs(pesoAtual - pesoIdeal);
+
+        // Verifica se é o paciente mais distante
+        if (i === 1 || distancia > maiorDistancia) {
+            maiorDistancia = distancia;
+            nomeMaisDistante = nome;
+        }
+    }
+
+    console.log("Paciente mais distante do peso ideal: " + nomeMaisDistante);
+    console.log("Quantidade de pacientes no peso ideal: " +
+        pacientesNoPesoIdeal);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 13</title>
+</head>
+<body>
+
+<script>
+    let R = [];
+    let A = [];
+
+    // Leitura do gabarito
+    console.log("=== GABARITO ===");
+
+    for (let i = 0; i < 5; i++) {
+        R[i] = Number(prompt("Digite o número do gabarito R[" + i + "]:"));
+    }
+
+    // Leitura da aposta
+    console.log("=== APOSTA ===");
+
+    for (let i = 0; i < 10; i++) {
+        A[i] = Number(prompt("Digite o número da aposta A[" + i + "]:"));
+    }
+
+    let pontos = 0;
+
+    // Comparação
+    for (let i = 0; i < 10; i++) {
+
+        for (let j = 0; j < 5; j++) {
+
+            if (A[i] === R[j]) {
+                pontos++;
+                break;
+            }
+        }
+    }
+
+    console.log("Quantidade de pontos: " + pontos);
+</script>
+
+</body>
+</html>

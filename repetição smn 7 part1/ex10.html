@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 10</title>
+</head>
+<body>
+
+<script>
+    let quantidadeAlunos = Number(prompt("Digite o número de alunos da turma:"));
+
+    for (let i = 1; i <= quantidadeAlunos; i++) {
+
+        console.log("Aluno " + i);
+
+        let nota1 = Number(prompt("Digite a primeira nota do aluno " + i + ":"));
+        let nota2 = Number(prompt("Digite a segunda nota do aluno " + i + ":"));
+
+        let media = (nota1 + nota2) / 2;
+
+        console.log("Média: " + media.toFixed(2));
+
+        if (media >= 6) {
+            console.log("APROVADO");
+        } else {
+            console.log("REPROVADO");
+        }
+    }
+</script>
+
+</body>
+</html>

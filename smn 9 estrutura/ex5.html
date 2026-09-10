@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 5</title>
+</head>
+<body>
+
+<script>
+    let X = [];
+    let R = [];
+
+    // Preenchendo X
+    for (let i = 0; i < 10; i++) {
+        X[i] = Number(prompt("Digite o valor X[" + i + "]:"));
+    }
+
+    // Copiando somente os negativos
+    let posicaoR = 0;
+
+    for (let i = 0; i < 10; i++) {
+
+        if (X[i] < 0) {
+            R[posicaoR] = X[i];
+            posicaoR++;
+        }
+    }
+
+    console.log("Vetor X:");
+    console.log(X);
+
+    console.log("Vetor R:");
+    console.log(R);
+</script>
+
+</body>
+</html>

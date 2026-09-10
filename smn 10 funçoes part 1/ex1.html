@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 1</title>
+</head>
+<body>
+
+<script>
+    let inteiros = 0;
+    let naoInteiros = 0;
+
+    for (let i = 1; i <= 10; i++) {
+
+        let numero = Number(prompt("Digite o " + i + "º número:"));
+
+        if (Number.isInteger(numero)) {
+            inteiros++;
+        } else {
+            naoInteiros++;
+        }
+    }
+
+    console.log("Quantidade de números inteiros: " + inteiros);
+    console.log("Quantidade de números não inteiros: " + naoInteiros);
+</script>
+
+</body>
+</html>

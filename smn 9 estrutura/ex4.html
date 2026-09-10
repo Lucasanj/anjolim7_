@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 4</title>
+</head>
+<body>
+
+<script>
+    let C = [];
+
+    // Preenchendo o vetor
+    for (let i = 0; i < 10; i++) {
+        C[i] = Number(prompt("Digite o valor C[" + i + "]:"));
+    }
+
+    // Troca dos valores negativos por zero
+    for (let i = 0; i < 10; i++) {
+
+        if (C[i] < 0) {
+            C[i] = 0;
+        }
+    }
+
+    console.log("Vetor C após as alterações:");
+    console.log(C);
+</script>
+
+</body>
+</html>

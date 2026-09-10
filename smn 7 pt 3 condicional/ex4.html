@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 4</title>
+</head>
+<body>
+
+<script>
+    let dia = Number(prompt("Digite o dia:"));
+    let mes = Number(prompt("Digite o mês:"));
+    let ano = Number(prompt("Digite o ano:"));
+
+    let diasNoMes;
+
+    // Verifica a quantidade de dias do mês
+    if (mes === 2) {
+        // Verifica se o ano é bissexto
+        if ((ano % 400 === 0) || (ano % 4 === 0 && ano % 100 !== 0)) {
+            diasNoMes = 29;
+        } else {
+            diasNoMes = 28;
+        }
+    } else if (
+        mes === 4 ||
+        mes === 6 ||
+        mes === 9 ||
+        mes === 11
+    ) {
+        diasNoMes = 30;
+    } else {
+        diasNoMes = 31;
+    }
+
+    // Calcula o dia seguinte
+    if (dia < diasNoMes) {
+        dia++;
+    } else {
+        dia = 1;
+
+        if (mes < 12) {
+            mes++;
+        } else {
+            mes = 1;
+            ano++;
+        }
+    }
+
+    console.log("Dia seguinte: " + dia + "/" + mes + "/" + ano);
+</script>
+
+</body>
+</html>

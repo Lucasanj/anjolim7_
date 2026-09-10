@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 3</title>
+</head>
+<body>
+
+<script>
+    let numero1 = Number(prompt("Digite o primeiro número:"));
+    let numero2 = Number(prompt("Digite o segundo número:"));
+
+    let menor;
+    let maior;
+
+    if (numero1 < numero2) {
+        menor = numero1;
+        maior = numero2;
+    } else {
+        menor = numero2;
+        maior = numero1;
+    }
+
+    console.log("=== 20 NÚMEROS SORTEADOS ===");
+
+    for (let i = 1; i <= 20; i++) {
+
+        let numeroSorteado =
+            Math.floor(Math.random() * (maior - menor + 1)) + menor;
+
+        console.log(numeroSorteado);
+    }
+</script>
+
+</body>
+</html>

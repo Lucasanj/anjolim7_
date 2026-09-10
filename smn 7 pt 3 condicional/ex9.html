@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 9</title>
+</head>
+<body>
+
+<script>
+    let codigo = Number(prompt("Digite o código do produto:"));
+    let quantidade = Number(prompt("Digite a quantidade:"));
+
+    let preco;
+
+    if (codigo === 100) {
+        preco = 10.00;
+
+    } else if (codigo === 101) {
+        preco = 15.00;
+
+    } else if (codigo === 102) {
+        preco = 18.00;
+
+    } else if (codigo === 103) {
+        preco = 13.00;
+
+    } else if (codigo === 104) {
+        preco = 20.00;
+
+    } else if (codigo === 105) {
+        preco = 3.00;
+
+    } else {
+        console.log("Código de produto inválido.");
+    }
+
+    if (preco !== undefined) {
+        let valorTotal = preco * quantidade;
+
+        console.log("Valor a pagar: R$ " + valorTotal.toFixed(2));
+    }
+</script>
+
+</body>
+</html>

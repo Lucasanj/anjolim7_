@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 11</title>
+</head>
+<body>
+
+<script>
+    let vetor = [];
+
+    // Preenchendo o vetor
+    for (let i = 0; i < 10; i++) {
+        vetor[i] = Number(prompt("Digite o valor da posição " + i + ":"));
+    }
+
+    let somaPares = 0;
+    let somaImpares = 0;
+
+    // Percorrendo o vetor
+    for (let i = 0; i < 10; i++) {
+
+        if (i % 2 === 0) {
+            somaPares += vetor[i];
+        } else {
+            somaImpares += vetor[i];
+        }
+    }
+
+    // Existem 5 índices pares: 0, 2, 4, 6 e 8
+    let mediaPares = somaPares / 5;
+
+    console.log("Média dos valores nos índices pares: " +
+        mediaPares.toFixed(2));
+
+    console.log("Soma dos valores nos índices ímpares: " +
+        somaImpares);
+</script>
+
+</body>
+</html>

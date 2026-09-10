@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 13</title>
+</head>
+<body>
+
+    <h1>Exercício 13 - Percentual de Votos</h1>
+
+    <label>Total de eleitores:</label>
+    <input type="number" id="total">
+    <br><br>
+
+    <label>Votos brancos:</label>
+    <input type="number" id="brancos">
+    <br><br>
+
+    <label>Votos nulos:</label>
+    <input type="number" id="nulos">
+    <br><br>
+
+    <label>Votos válidos:</label>
+    <input type="number" id="validos">
+    <br><br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcular() {
+            let total = Number(document.getElementById("total").value);
+            let brancos = Number(document.getElementById("brancos").value);
+            let nulos = Number(document.getElementById("nulos").value);
+            let validos = Number(document.getElementById("validos").value);
+
+            let percentualBrancos =
+                (brancos / total) * 100;
+
+            let percentualNulos =
+                (nulos / total) * 100;
+
+            let percentualValidos =
+                (validos / total) * 100;
+
+            console.log("Brancos:", percentualBrancos);
+            console.log("Nulos:", percentualNulos);
+            console.log("Válidos:", percentualValidos);
+
+            document.getElementById("resultado").innerHTML =
+                "Votos brancos: " +
+                percentualBrancos.toFixed(2) + "%<br>" +
+
+                "Votos nulos: " +
+                percentualNulos.toFixed(2) + "%<br>" +
+
+                "Votos válidos: " +
+                percentualValidos.toFixed(2) + "%";
+        }
+    </script>
+
+</body>
+</html>

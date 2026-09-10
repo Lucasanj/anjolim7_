@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 2</title>
+</head>
+<body>
+
+<script>
+    let salario = Number(prompt("Digite o salário do funcionário:"));
+
+    let percentual;
+
+    if (salario <= 400) {
+        percentual = 15;
+    } else if (salario <= 800) {
+        percentual = 12;
+    } else if (salario <= 1200) {
+        percentual = 10;
+    } else if (salario <= 2000) {
+        percentual = 7;
+    } else {
+        percentual = 4;
+    }
+
+    let reajuste = salario * (percentual / 100);
+    let novoSalario = salario + reajuste;
+
+    console.log("Salário atual: R$ " + salario.toFixed(2));
+    console.log("Reajuste: R$ " + reajuste.toFixed(2));
+    console.log("Percentual de reajuste: " + percentual + "%");
+    console.log("Novo salário: R$ " + novoSalario.toFixed(2));
+</script>
+
+</body>
+</html>

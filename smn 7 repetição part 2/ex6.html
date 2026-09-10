@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 6</title>
+</head>
+<body>
+
+<script>
+    let continuar = true;
+
+    while (continuar) {
+
+        let numero1 = Number(prompt("Digite o primeiro valor:"));
+        let numero2 = Number(prompt("Digite o segundo valor:"));
+
+        // Repete enquanto o segundo número for zero
+        while (numero2 === 0) {
+            console.log("O segundo valor não pode ser zero.");
+
+            numero2 = Number(prompt("Digite outro valor para o segundo número:"));
+        }
+
+        let resultado = numero1 / numero2;
+
+        console.log("Resultado da divisão: " + resultado);
+
+        continuar = window.confirm("Deseja fazer outra divisão?");
+    }
+
+    console.log("Programa encerrado.");
+</script>
+
+</body>
+</html>

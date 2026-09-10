@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 3</title>
+</head>
+<body>
+
+<script>
+    let notas = [];
+    let soma = 0;
+
+    // Leitura das 10 notas
+    for (let i = 0; i < 10; i++) {
+
+        let nota = Number(prompt("Digite a nota do aluno " + (i + 1) + ":"));
+
+        while (nota < 0 || nota > 10 || isNaN(nota)) {
+            nota = Number(prompt("Nota inválida! Digite uma nota entre 0 e 10:"));
+        }
+
+        notas[i] = nota;
+        soma += nota;
+    }
+
+    let media = soma / 10;
+    let acimaDaMedia = 0;
+
+    // Contagem das notas acima da média
+    for (let i = 0; i < 10; i++) {
+
+        if (notas[i] > media) {
+            acimaDaMedia++;
+        }
+    }
+
+    console.log("Média da turma: " + media.toFixed(2));
+    console.log("Alunos acima da média: " + acimaDaMedia);
+</script>
+
+</body>
+</html>

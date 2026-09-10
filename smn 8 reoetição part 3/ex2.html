@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 2</title>
+</head>
+<body>
+
+<script>
+    let quantidadePessoas = Number(
+        prompt("Quantas pessoas confirmaram presença?")
+    );
+
+    let maioresDeIdade = 0;
+    let menoresDeIdade = 0;
+    let temMaisDe70 = false;
+
+    let nomeMaisNovo = "";
+    let menorIdade;
+
+    for (let i = 1; i <= quantidadePessoas; i++) {
+
+        let nome = prompt("Digite o nome da pessoa " + i + ":");
+        let idade = Number(prompt("Digite a idade de " + nome + ":"));
+
+        // Verifica maioridade
+        if (idade >= 18) {
+            maioresDeIdade++;
+        } else {
+            menoresDeIdade++;
+        }
+
+        // Verifica se existe alguém com mais de 70 anos
+        if (idade > 70) {
+            temMaisDe70 = true;
+        }
+
+        // Descobre a pessoa mais nova
+        if (i === 1) {
+            menorIdade = idade;
+            nomeMaisNovo = nome;
+        } else if (idade < menorIdade) {
+            menorIdade = idade;
+            nomeMaisNovo = nome;
+        }
+    }
+
+    console.log("Existe convidado com mais de 70 anos? " +
+        (temMaisDe70 ? "SIM" : "NÃO"));
+
+    console.log("Quantidade de maiores de idade: " + maioresDeIdade);
+    console.log("Quantidade de menores de idade: " + menoresDeIdade);
+    console.log("Pessoa mais nova: " + nomeMaisNovo);
+</script>
+
+</body>
+</html>

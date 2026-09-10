@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 2 - Somatório</title>
+</head>
+<body>
+
+<script>
+    function somatorio(numero) {
+        let soma = 0;
+
+        for (let i = 1; i <= numero; i++) {
+            soma = soma + i;
+        }
+
+        return soma;
+    }
+
+    for (let i = 1; i <= 10; i++) {
+
+        let numero;
+
+        do {
+            numero = Number(
+                prompt("Digite o " + i + "º número inteiro positivo:")
+            );
+
+            if (numero <= 0 || !Number.isInteger(numero)) {
+                alert("Valor inválido! Digite um número inteiro positivo.");
+            }
+
+        } while (numero <= 0 || !Number.isInteger(numero));
+
+        let resultado = somatorio(numero);
+
+        console.log(
+            "Somatório de 1 até " + numero + ": " + resultado
+        );
+    }
+</script>
+
+</body>
+</html>

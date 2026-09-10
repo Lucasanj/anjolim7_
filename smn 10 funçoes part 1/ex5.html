@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 5</title>
+</head>
+<body>
+
+<script>
+    let maiorNome = "";
+    let menorNome = "";
+
+    for (let i = 1; i <= 10; i++) {
+
+        let nome = prompt("Digite o nome da pessoa " + i + ":");
+
+        if (i === 1) {
+            maiorNome = nome;
+            menorNome = nome;
+        } else {
+
+            if (nome.length > maiorNome.length) {
+                maiorNome = nome;
+            }
+
+            if (nome.length < menorNome.length) {
+                menorNome = nome;
+            }
+        }
+    }
+
+    console.log("Maior nome: " + maiorNome.toUpperCase());
+    console.log("Menor nome: " + menorNome.toLowerCase());
+</script>
+
+</body>
+</html>

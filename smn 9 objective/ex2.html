@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.destaque {
+			background-color: yellow;
+		}
+		.normal{
+			background-color: lightgray;
+		}
+	</style>
+</head>
+<body>
+	<p class="normal">
+	Parágrafo 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	</p>
+	<p class="destaque">
+	Parágrafo 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	</p>
+	<p class="normal">
+	Parágrafo 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	</p>
+	<p class="destaque">
+	Parágrafo 4: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	</p>
+	<p class="destaque">
+	Parágrafo 5: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	</p>
+	<script>
+		var classNormal = document.querySelectorAll(".normal");
+		for(var i = 0; i < classNormal.length; i++){
+			classNormal[i].classList.remove("normal");
+			classNormal[i].classList.add("destaque");
+		}
+
+
+		/*
+		Observe que se utilizarmos o código abaixo, ele não funcionará como desejado, pois o método getElementsByClassName retorna uma coleção "ao vivo" de elementos, ou seja, se você remover a classe "normal" de um elemento, ele será removido da coleção e o loop não percorrerá todos os elementos. Por isso, no código acima, utilizamos querySelectorAll.
+		*/
+		/*
+		var classNormal = document.getElementsByClassName("normal");
+		for(var i = 0; i < classNormal.length; i++){
+			classNormal[i].classList.remove("normal");
+			classNormal[i].classList.add("destaque");
+		}
+		*/
+	</script>
+</body>
+</html>

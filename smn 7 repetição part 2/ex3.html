@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 3</title>
+</head>
+<body>
+
+<script>
+    let idade;
+    let maiores = 0;
+    let menores = 0;
+
+    idade = Number(prompt("Digite uma idade (número negativo para encerrar):"));
+
+    while (idade >= 0) {
+
+        if (idade >= 18) {
+            maiores++;
+        } else {
+            menores++;
+        }
+
+        idade = Number(prompt("Digite outra idade (número negativo para encerrar):"));
+    }
+
+    console.log("Maiores de idade: " + maiores);
+    console.log("Menores de idade: " + menores);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 2</title>
+</head>
+<body>
+
+<script>
+    let numero;
+    let quantidade = 0;
+
+    numero = Number(prompt("Digite um número (0 para encerrar):"));
+
+    while (numero !== 0) {
+
+        if (numero >= 100 && numero <= 200) {
+            quantidade++;
+        }
+
+        numero = Number(prompt("Digite outro número (0 para encerrar):"));
+    }
+
+    console.log("Quantidade de números entre 100 e 200: " + quantidade);
+</script>
+
+</body>
+</html>

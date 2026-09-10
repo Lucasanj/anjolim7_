@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 9</title>
+</head>
+<body>
+
+<script>
+    let vetor = [];
+    let i = 0;
+
+    while (i < 10) {
+
+        let valor = Number(
+            prompt("Digite um valor (0 ou negativo para encerrar):")
+        );
+
+        if (valor <= 0) {
+            break;
+        }
+
+        vetor[i] = valor;
+        i++;
+    }
+
+    let soma = 0;
+
+    for (let j = 0; j < vetor.length; j++) {
+
+        if (vetor[j] > 5) {
+            soma += vetor[j];
+        }
+    }
+
+    console.log("Vetor:", vetor);
+    console.log("Soma dos valores maiores que 5: " + soma);
+</script>
+
+</body>
+</html>

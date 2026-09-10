@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 3 - Número Primo</title>
+</head>
+<body>
+
+<script>
+    function ehPrimo(numero) {
+
+        if (numero < 2) {
+            return false;
+        }
+
+        for (let i = 2; i < numero; i++) {
+
+            if (numero % i === 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    for (let i = 1; i <= 10; i++) {
+
+        let numero;
+
+        do {
+            numero = Number(
+                prompt("Digite o " + i + "º número inteiro positivo:")
+            );
+
+            if (numero <= 0 || !Number.isInteger(numero)) {
+                alert("Valor inválido! Digite um número inteiro positivo.");
+            }
+
+        } while (numero <= 0 || !Number.isInteger(numero));
+
+        if (ehPrimo(numero)) {
+            console.log(numero + " é um número primo.");
+        } else {
+            console.log(numero + " não é um número primo.");
+        }
+    }
+</script>
+
+</body>
+</html>

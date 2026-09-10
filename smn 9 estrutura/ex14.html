@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 14</title>
+</head>
+<body>
+
+<script>
+    let temperaturas = [];
+
+    let meses = [
+        "Janeiro",
+        "Fevereiro",
+        "Março",
+        "Abril",
+        "Maio",
+        "Junho",
+        "Julho",
+        "Agosto",
+        "Setembro",
+        "Outubro",
+        "Novembro",
+        "Dezembro"
+    ];
+
+    // Preenchendo o vetor
+    for (let i = 0; i < 12; i++) {
+
+        temperaturas[i] = Number(
+            prompt("Digite a temperatura média de " + meses[i] + ":")
+        );
+    }
+
+    // Inicializando maior e menor
+    let maior = temperaturas[0];
+    let menor = temperaturas[0];
+
+    let mesMaior = 0;
+    let mesMenor = 0;
+
+    // Procurando maior e menor temperatura
+    for (let i = 1; i < 12; i++) {
+
+        if (temperaturas[i] > maior) {
+            maior = temperaturas[i];
+            mesMaior = i;
+        }
+
+        if (temperaturas[i] < menor) {
+            menor = temperaturas[i];
+            mesMenor = i;
+        }
+    }
+
+    // Exibindo temperaturas
+    console.log("=== TEMPERATURAS ===");
+
+    for (let i = 0; i < 12; i++) {
+        console.log(
+            meses[i] + ": " + temperaturas[i] + " °C"
+        );
+    }
+
+    console.log("====================");
+
+    console.log(
+        "Maior temperatura: " +
+        maior +
+        " °C - " +
+        meses[mesMaior]
+    );
+
+    console.log(
+        "Menor temperatura: " +
+        menor +
+        " °C - " +
+        meses[mesMenor]
+    );
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 12</title>
+</head>
+<body>
+
+<script>
+    let vetor = [];
+
+    // Preenchendo o vetor
+    for (let i = 0; i < 10; i++) {
+
+        let valor = Number(
+            prompt("Digite um número positivo para a posição " + i + ":")
+        );
+
+        while (valor <= 0 || !Number.isInteger(valor)) {
+            valor = Number(
+                prompt("Valor inválido! Digite um número inteiro positivo:")
+            );
+        }
+
+        vetor[i] = valor;
+    }
+
+    // Calculando os fatoriais
+    for (let i = 0; i < 10; i++) {
+
+        let numero = vetor[i];
+        let fatorial = 1;
+
+        for (let j = numero; j >= 1; j--) {
+            fatorial *= j;
+        }
+
+        console.log(numero + "! = " + fatorial);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 6</title>
+</head>
+<body>
+
+<script>
+    let B = [];
+
+    // Preenchendo B
+    for (let i = 0; i < 10; i++) {
+        B[i] = Number(prompt("Digite o valor B[" + i + "]:"));
+    }
+
+    let X = Number(prompt("Digite o valor que deseja procurar:"));
+
+    console.log("Posições onde o valor aparece:");
+
+    let encontrou = false;
+
+    for (let i = 0; i < 10; i++) {
+
+        if (B[i] === X) {
+            console.log("Índice: " + i);
+            encontrou = true;
+        }
+    }
+
+    if (!encontrou) {
+        console.log("O valor não foi encontrado no vetor.");
+    }
+</script>
+
+</body>
+</html>

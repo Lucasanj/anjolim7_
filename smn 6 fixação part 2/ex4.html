@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 4</title>
+</head>
+<body>
+
+<script>
+    let quantidadeFitas = Number(prompt("Digite a quantidade de fitas:"));
+    let valorAluguel = Number(prompt("Digite o valor de cada aluguel:"));
+
+    // a) Faturamento anual
+    let fitasAlugadasMes = quantidadeFitas / 3;
+    let faturamentoMensal = fitasAlugadasMes * valorAluguel;
+    let faturamentoAnual = faturamentoMensal * 12;
+
+    // b) Multas por mês
+    let fitasAtrasadas = fitasAlugadasMes / 10;
+    let valorMulta = valorAluguel * 0.10;
+    let multasMes = fitasAtrasadas * valorMulta;
+
+    // c) Fitas no final do ano
+    let fitasEstragadas = quantidadeFitas * 0.02;
+    let fitasCompradas = quantidadeFitas * 0.10;
+
+    let quantidadeFinal = quantidadeFitas - fitasEstragadas + fitasCompradas;
+
+    console.log("a) Faturamento anual: R$ " + faturamentoAnual.toFixed(2));
+    console.log("b) Valor ganho com multas por mês: R$ " + multasMes.toFixed(2));
+    console.log("c) Quantidade de fitas no final do ano: " + quantidadeFinal);
+</script>
+
+</body>
+</html>

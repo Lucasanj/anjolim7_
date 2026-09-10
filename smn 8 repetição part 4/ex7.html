@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 7</title>
+</head>
+<body>
+
+<script>
+    let meses = Number(prompt("Digite o período de análise em meses:"));
+
+    let produtos = Number(
+        prompt("Digite o número de produtos diferentes:")
+    );
+
+    console.log("Período de análise: " + meses + " meses");
+    console.log("Número de produtos: " + produtos + " produtos");
+
+    for (let produto = 1; produto <= produtos; produto++) {
+
+        let total = 0;
+
+        console.log("Produto " + produto + ":");
+
+        for (let mes = 1; mes <= meses; mes++) {
+
+            let quantidade = Number(
+                prompt(
+                    "Produto " + produto +
+                    " - Digite a quantidade vendida no mês " + mes + ":"
+                )
+            );
+
+            while (quantidade < 0 || isNaN(quantidade)) {
+                quantidade = Number(
+                    prompt("Quantidade inválida! Digite novamente:")
+                );
+            }
+
+            total += quantidade;
+
+            console.log(
+                "- Mês " + mes + ": " + quantidade + " unidades"
+            );
+        }
+
+        console.log("Total: " + total + " unidades");
+        console.log("-------------------------");
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício 5</title>
+</head>
+<body>
+
+<script>
+    let opcao;
+
+    do {
+        opcao = Number(prompt(
+            "=== CALCULADORA ===\n" +
+            "1 - Soma\n" +
+            "2 - Subtração\n" +
+            "3 - Multiplicação\n" +
+            "4 - Divisão\n" +
+            "5 - Encerrar\n\n" +
+            "Escolha uma opção:"
+        ));
+
+        if (opcao >= 1 && opcao <= 4) {
+
+            let numero1 = Number(prompt("Digite o primeiro número:"));
+            let numero2 = Number(prompt("Digite o segundo número:"));
+
+            let resultado;
+
+            if (opcao === 1) {
+                resultado = numero1 + numero2;
+                console.log("Resultado: " + resultado);
+
+            } else if (opcao === 2) {
+                resultado = numero1 - numero2;
+                console.log("Resultado: " + resultado);
+
+            } else if (opcao === 3) {
+                resultado = numero1 * numero2;
+                console.log("Resultado: " + resultado);
+
+            } else if (opcao === 4) {
+
+                if (numero2 === 0) {
+                    console.log("Não é possível dividir por zero.");
+                } else {
+                    resultado = numero1 / numero2;
+                    console.log("Resultado: " + resultado);
+                }
+            }
+
+            if (opcao !== 5) {
+                let continuar = window.confirm("Deseja fazer outro cálculo?");
+
+                if (!continuar) {
+                    opcao = 5;
+                }
+            }
+
+        } else if (opcao !== 5) {
+            console.log("Opção inválida.");
+        }
+
+    } while (opcao !== 5);
+
+    console.log("Calculadora encerrada.");
+</script>
+
+</body>
+</html>

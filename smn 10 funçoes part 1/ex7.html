@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 7</title>
+</head>
+<body>
+
+<script>
+    let nome = prompt("Digite seu nome sem acentos:");
+
+    let senha = 0;
+
+    for (let i = 0; i < nome.length; i++) {
+
+        let codigo = nome.charCodeAt(i);
+
+        console.log(
+            "Letra: " + nome[i] +
+            " - Código ASCII: " + codigo
+        );
+
+        senha += codigo;
+    }
+
+    console.log("======================");
+    console.log("Nome: " + nome);
+    console.log("Senha numérica: " + senha);
+</script>
+
+</body>
+</html>
