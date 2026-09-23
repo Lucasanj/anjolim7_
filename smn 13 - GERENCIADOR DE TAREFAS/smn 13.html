@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="smn 13.css">
+</head>
+<body>
+<div class="container">
+<h1>Gerenciador de Tarefas</h1>
+<p class="subtitulo">
+ Organize suas tarefas de forma simples e prática.
+</p>
+<section class="card">
+    <h2>Adicionar Tarefa</h2>
+        <form>
+    <label for="descricao">
+    Descrição:
+    </label>
+<input
+type="text"
+id="descricao"
+placeholder="Digite a descrição da tarefa">
+<label for="categoria">
+Categoria:
+</label>
+<select id="categoria">
+     <option>Selecione uma categoria</option>
+    <option>Estudos</option>
+    <option>Trabalho</option>
+    <option>Pessoal</option>
+    <option>Outros</option>
+    </select>
+    <label for="prioridade">
+    Prioridade:
+    </label>
+    <select id="prioridade">
+    <option>Selecione a prioridade</option>
+    <option>Baixa</option>
+    <option>Média</option>
+<option>Alta</option>
+</select>
+<label for="data">
+Data de conclusão:
+    </label>
+        <input
+    type="date"
+    id="data">
+    <button type="button">
+    Adicionar tarefa
+    </button>
+    </form>
+</section>
+<section class="indicadores">
+<div class="indicador">
+<h3>3</h3>
+    <p>Total de tarefas</p>
+</div>
+    <div class="indicador">
+<h3>2</h3>
+    <p>Tarefas pendentes</p>
+</div>
+<div class="indicador">
+<h3>1</h3>
+<p>Tarefas concluídas</p>
+</div>
+</section>
+    <section class="card">
+        <h2>Filtros</h2>
+        <div class="filtros">
+        <div>
+    <label for="situacao">
+    Situação:
+</label>
+<select id="situacao">
+    <option>Todas</option>
+    <option>Pendentes</option>
+    <option>Concluídas</option>
+</select>
+</div>
+<div>
+<label for="filtroCategoria">
+    Categoria:
+</label>
+<select id="filtroCategoria">
+        <option>Todas</option>
+        <option>Estudos</option>
+        <option>Trabalho</option>
+        <option>Pessoal</option>
+        <option>Outros</option>
+</select>
+    </div>
+    </div>
+    </section>
+<section class="card">
+<h2>Minhas Tarefas</h2>
+<div class="tarefa">
+<div>
+<h3>
+Fazer exercícios de JavaScript
+</h3>
+<p>
+<strong>Categoria:</strong>
+    Estudos
+</p>
+<p>
+<strong>Prioridade:</strong>
+Alta
+</p>
+<p>
+<strong>Data:</strong>
+20/09/2026
+</p>
+<p class="pendente">
+<strong>Situação:</strong>
+Pendente
+</p>
+</div>
+<div class="botoes">
+<button class="concluir">
+Concluir
+</button>
+<button class="excluir">
+Excluir
+</button>
+</div>
+</div>
+<div class="tarefa">
+<div>
+<h3>
+Estudar HTML e CSS
+</h3>
+<p>
+<strong>Categoria:</strong>
+Estudos
+</p>
+<p>
+<strong>Prioridade:</strong>
+Média
+</p>
+<p>
+<strong>Data:</strong>
+22/09/2026
+</p>
+<p class="pendente">
+<strong>Situação:</strong>
+Pendente
+</p>
+</div>
+<div class="botoes">
+<button class="concluir">
+Concluir
+</button>
+<button class="excluir">
+Excluir
+</button>
+</div>
+    </div>
+    <div class="tarefa concluida">
+    <div>
+<h3>
+Entregar trabalho HTML e CSS
+    </h3>
+    <p>
+    <strong>Categoria:</strong>
+    Estudos
+    </p>
+    <p>
+    <strong>Prioridade:</strong>
+    Alta
+    </p>
+<p>
+<strong>Data:</strong>
+18/09/2026
+</p>
+<p class="status-concluido">
+<strong>Situação:</strong>
+ Concluída
+ </p>
+</div>
+<div class="botoes">
+    <button class="desfazer">
+ Desfazer
+</button>
+<button class="excluir">
+ Excluir
+</button>
+ </div>
+ </div>
+</section>
+</div>
+</body>
+</html>
