@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Gerenciador de Tarefas</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>TaskFlow</h1>
+        <p>Gerenciador de Tarefas</p>
+    </header>
+
+    <main>
+
+        <section class="formulario">
+            <h2>Nova Tarefa</h2>
+
+            <input type="text" id="titulo" placeholder="Título da tarefa">
+
+            <textarea id="descricao" placeholder="Descrição da tarefa"></textarea>
+
+            <label for="data">Prazo:</label>
+            <input type="date" id="data">
+
+            <label for="prioridade">Prioridade:</label>
+            <select id="prioridade">
+                <option value="Baixa">Baixa</option>
+                <option value="Média">Média</option>
+                <option value="Alta">Alta</option>
+            </select>
+
+            <button onclick="adicionarTarefa()">Adicionar Tarefa</button>
+        </section>
+
+        <section class="tarefas">
+
+            <div class="topo">
+                <h2>Minhas Tarefas</h2>
+
+                <select id="filtro" onchange="mostrarTarefas()">
+                    <option value="Todas">Todas</option>
+                    <option value="Pendentes">Pendentes</option>
+                    <option value="Concluídas">Concluídas</option>
+                </select>
+            </div>
+
+            <div id="listaTarefas"></div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>TaskFlow © 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
