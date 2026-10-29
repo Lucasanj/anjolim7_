@@ -3,63 +3,385 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskFlow - Gerenciador de Tarefas</title>
 
-    <link rel="stylesheet" href="style.css">
+    <title>ClimaViva • Consulta Meteorológica</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="smn 15.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>TaskFlow</h1>
-        <p>Gerenciador de Tarefas</p>
+    <div class="bg-orb orb-one"></div>
+    <div class="bg-orb orb-two"></div>
+
+    <!-- CABEÇALHO -->
+    <header class="topbar">
+
+        <a class="brand" href="#">
+            <span class="brand-icon">☁</span>
+
+            <span>
+                <strong>ClimaViva</strong>
+                <small>Consulta meteorológica</small>
+            </span>
+        </a>
+
+        <div class="top-actions">
+            <span class="live-dot"></span>
+            <span>Dados em tempo real</span>
+        </div>
+
     </header>
 
-    <main>
+    <main class="container">
 
-        <section class="formulario">
-            <h2>Nova Tarefa</h2>
+        <!-- HERO -->
+        <section class="hero">
 
-            <input type="text" id="titulo" placeholder="Título da tarefa">
+            <div>
 
-            <textarea id="descricao" placeholder="Descrição da tarefa"></textarea>
+                <p class="eyebrow">
+                    PREVISÃO INTELIGENTE
+                </p>
 
-            <label for="data">Prazo:</label>
-            <input type="date" id="data">
+                <h1>
+                    O clima da sua cidade,
+                    <br>
+                    <span>de um jeito simples.</span>
+                </h1>
 
-            <label for="prioridade">Prioridade:</label>
-            <select id="prioridade">
-                <option value="Baixa">Baixa</option>
-                <option value="Média">Média</option>
-                <option value="Alta">Alta</option>
-            </select>
+                <p class="hero-text">
+                    Pesquise uma cidade, acompanhe as condições atuais
+                    e veja a previsão dos próximos dias.
+                </p>
 
-            <button onclick="adicionarTarefa()">Adicionar Tarefa</button>
-        </section>
-
-        <section class="tarefas">
-
-            <div class="topo">
-                <h2>Minhas Tarefas</h2>
-
-                <select id="filtro" onchange="mostrarTarefas()">
-                    <option value="Todas">Todas</option>
-                    <option value="Pendentes">Pendentes</option>
-                    <option value="Concluídas">Concluídas</option>
-                </select>
             </div>
 
-            <div id="listaTarefas"></div>
+            <div class="hero-art">
+
+                <div class="sun"></div>
+
+                <div class="cloud cloud-a"></div>
+
+                <div class="cloud cloud-b"></div>
+
+            </div>
 
         </section>
+
+
+        <!-- PESQUISA -->
+        <section class="search-card">
+
+            <form id="searchForm">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        id="cityInput"
+                        type="text"
+                        placeholder="Digite o nome da cidade..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+                <button class="primary-btn" type="submit">
+
+                    <span>Pesquisar</span>
+
+                    <span>→</span>
+
+                </button>
+
+            </form>
+
+            <div
+                id="status"
+                class="status"
+                role="status">
+            </div>
+
+        </section>
+
+
+        <!-- RESULTADOS DAS CIDADES -->
+        <section
+            id="locationsSection"
+            class="panel hidden">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        RESULTADOS
+                    </p>
+
+                    <h2>
+                        Escolha uma localidade
+                    </h2>
+
+                </div>
+
+                <span
+                    id="resultCount"
+                    class="pill">
+                </span>
+
+            </div>
+
+            <div
+                id="locations"
+                class="locations-grid">
+            </div>
+
+        </section>
+
+
+        <!-- CLIMA -->
+        <section
+            id="weatherSection"
+            class="hidden">
+
+            <div class="current-card">
+
+                <div class="current-main">
+
+                    <div class="location-line">
+
+                        <span class="pin">
+                            ⌖
+                        </span>
+
+                        <span id="currentLocation">
+                            —
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="date-now"
+                        id="currentDate">
+                        —
+                    </div>
+
+
+                    <div class="temperature-row">
+
+                        <div
+                            id="weatherIcon"
+                            class="big-weather-icon">
+                            ☀️
+                        </div>
+
+                        <div>
+
+                            <strong id="currentTemp">
+                                —
+                            </strong>
+
+                            <span>
+                                °C
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p
+                        id="currentDescription"
+                        class="condition">
+                        —
+                    </p>
+
+                </div>
+
+
+                <!-- INFORMAÇÕES -->
+                <div class="weather-stats">
+
+                    <div class="stat">
+
+                        <span>💨</span>
+
+                        <small>
+                            Vento
+                        </small>
+
+                        <strong id="wind">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <span>💧</span>
+
+                        <small>
+                            Umidade
+                        </small>
+
+                        <strong id="humidity">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <span>🌡️</span>
+
+                        <small>
+                            Sensação
+                        </small>
+
+                        <strong id="feels">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="favoriteBtn"
+                    class="favorite-btn"
+                    type="button">
+
+                    ☆ Adicionar aos favoritos
+
+                </button>
+
+            </div>
+
+
+            <!-- PREVISÃO -->
+            <div class="section-heading forecast-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        PRÓXIMOS DIAS
+                    </p>
+
+                    <h2>
+                        Previsão de 5 dias
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="forecast"
+                class="forecast-grid">
+            </div>
+
+        </section>
+
+
+        <!-- FAVORITOS -->
+        <section class="favorites panel">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        SEUS LOCAIS
+                    </p>
+
+                    <h2>
+                        Cidades favoritas
+                    </h2>
+
+                </div>
+
+                <span class="heart">
+                    ♥
+                </span>
+
+            </div>
+
+
+            <div
+                id="favoritesList"
+                class="favorites-grid">
+            </div>
+
+
+            <div
+                id="emptyFavorites"
+                class="empty-state">
+
+                <div class="empty-icon">
+                    ♡
+                </div>
+
+                <h3>
+                    Nenhuma cidade favorita
+                </h3>
+
+                <p>
+                    Pesquise uma cidade e toque em
+                    “Adicionar aos favoritos” para salvá-la.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- RODAPÉ -->
+        <footer>
+
+            <span>
+                ClimaViva • Projeto Front-end
+            </span>
+
+            <span>
+                Dados meteorológicos por
+                <a
+                    href="https://open-meteo.com/"
+                    target="_blank">
+                    Open-Meteo
+                </a>
+            </span>
+
+        </footer>
 
     </main>
 
-    <footer>
-        <p>TaskFlow © 2026</p>
-    </footer>
 
-    <script src="script.js"></script>
+    <!-- CARREGAMENTO -->
+    <div
+        id="loading"
+        class="loading hidden">
+
+        <div class="loader"></div>
+
+        <span>
+            Consultando dados meteorológicos...
+        </span>
+
+    </div>
+
+
+    <script src="smn 15.js"></script>
 
 </body>
 </html>
