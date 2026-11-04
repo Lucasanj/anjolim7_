@@ -1,322 +1,343 @@
 
-const API_GEOCODING =
-    "https://geocoding-api.open-meteo.com/v1/search";
-
-const API_WEATHER =
-    "https://api.open-meteo.com/v1/forecast";
-
-const form = document.getElementById("search-form");
-const cityInput = document.getElementById("city-input");
-const statusMessage = document.getElementById("status-message");
-const searchResults = document.getElementById("search-results");
-const resultsList = document.getElementById("results-list");
-const weatherSection = document.getElementById("weather-section");
-
-const weatherCodes = {
-    0: "Céu limpo",
-    1: "Predominantemente limpo",
-    2: "Parcialmente nublado",
-    3: "Nublado",
-    45: "Nevoeiro",
-    48: "Nevoeiro com geada",
-    51: "Garoa fraca",
-    53: "Garoa moderada",
-    55: "Garoa intensa",
-    61: "Chuva fraca",
-    63: "Chuva moderada",
-    65: "Chuva forte",
-    71: "Neve fraca",
-    73: "Neve moderada",
-    75: "Neve forte",
-    80: "Pancadas de chuva fracas",
-    81: "Pancadas de chuva moderadas",
-    82: "Pancadas de chuva fortes",
-    95: "Trovoada",
-    96: "Trovoada com granizo",
-    99: "Trovoada forte com granizo"
+const API_GEO="https://geocoding-api.open-meteo.com/v1/search";
+const API_WEATHER="https://api.open-meteo.com/v1/forecast";
+const STORAGE_KEY="climatempo_favoritos";
+const searchForm=document.getElementById("searchForm");
+const cityInput=document.getElementById("cityInput");
+const searchButton=document.getElementById("searchButton");
+const statusMessage=document.getElementById("statusMessage");
+const resultsSection=document.getElementById("resultsSection");
+const cityResults=document.getElementById("cityResults");
+const weatherSection=document.getElementById("weatherSection");
+const currentWeather=document.getElementById("currentWeather");
+const forecast=document.getElementById("forecast");
+const favoriteButton=document.getElementById("favoriteButton");
+const favoritesList=document.getElementById("favoritesList");
+let selectedCity=null;
+let favorites=loadFavorites();
+let searchController=null;
+let weatherController=null;
+const weatherDescriptions={
+0:{description:"Céu limpo",icon:"☀️"},
+1:{description:"Predominantemente limpo",icon:"🌤️"},
+2:{description:"Parcialmente nublado",icon:"⛅"},
+3:{description:"Nublado",icon:"☁️"},
+45:{description:"Nevoeiro",icon:"🌫️"},
+48:{description:"Nevoeiro com geada",icon:"🌫️"},
+51:{description:"Garoa fraca",icon:"🌦️"},
+53:{description:"Garoa moderada",icon:"🌦️"},
+55:{description:"Garoa intensa",icon:"🌧️"},
+56:{description:"Garoa congelante fraca",icon:"🌧️"},
+57:{description:"Garoa congelante intensa",icon:"🌧️"},
+61:{description:"Chuva fraca",icon:"🌧️"},
+63:{description:"Chuva moderada",icon:"🌧️"},
+65:{description:"Chuva forte",icon:"🌧️"},
+66:{description:"Chuva congelante fraca",icon:"🌧️"},
+67:{description:"Chuva congelante forte",icon:"🌧️"},
+71:{description:"Neve fraca",icon:"🌨️"},
+73:{description:"Neve moderada",icon:"🌨️"},
+75:{description:"Neve forte",icon:"❄️"},
+77:{description:"Grãos de neve",icon:"❄️"},
+80:{description:"Pancadas de chuva fracas",icon:"🌦️"},
+81:{description:"Pancadas de chuva moderadas",icon:"🌧️"},
+82:{description:"Pancadas de chuva fortes",icon:"⛈️"},
+85:{description:"Pancadas de neve fracas",icon:"🌨️"},
+86:{description:"Pancadas de neve fortes",icon:"❄️"},
+95:{description:"Trovoada",icon:"⛈️"},
+96:{description:"Trovoada com granizo fraco",icon:"⛈️"},
+99:{description:"Trovoada com granizo forte",icon:"⛈️"}
 };
-
-function mostrarMensagem(texto, tipo = "info") {
-    statusMessage.textContent = texto;
-    statusMessage.className = `status ${tipo}`;
-    statusMessage.hidden = false;
+function getWeatherInfo(code){
+return weatherDescriptions[code]||{description:"Condição não identificada",icon:"🌡️"};
 }
-
-function criarElemento(tag, classe, texto) {
-    const elemento = document.createElement(tag);
-    elemento.className = classe;
-    elemento.textContent = texto;
-    return elemento;
+function showStatus(message,type=""){
+statusMessage.textContent=message;
+statusMessage.className="status "+type;
 }
-
-async function buscarJSON(url) {
-    const resposta = await fetch(url);
-
-    if (!resposta.ok) {
-        throw new Error(`Erro HTTP: ${resposta.status}`);
-    }
-
-    return await resposta.json();
+function clearWeather(){
+selectedCity=null;
+currentWeather.replaceChildren();
+forecast.replaceChildren();
+weatherSection.classList.add("hidden");
 }
-
-// Pesquisa a cidade na API de geocodificação
-async function pesquisarCidade(nomeCidade) {
-    const parametros = new URLSearchParams({
-        name: nomeCidade,
-        count: "10",
-        language: "pt",
-        format: "json"
-    });
-
-    return await buscarJSON(
-        `${API_GEOCODING}?${parametros.toString()}`
-    );
+function getCityKey(city){
+return `${Number(city.latitude).toFixed(4)}_${Number(city.longitude).toFixed(4)}_${city.name.toLowerCase()}_${city.country_code||""}`;
 }
-
-// Exibe as cidades encontradas
-function mostrarResultados(cidades) {
-    resultsList.replaceChildren();
-
-    cidades.forEach(cidade => {
-        const item = criarElemento("article", "result-item", "");
-        const informacoes = criarElemento("div", "result-info", "");
-
-        informacoes.append(
-            criarElemento("strong", "", cidade.name),
-            criarElemento(
-                "p",
-                "",
-                [
-                    cidade.admin1,
-                    cidade.country,
-                    `Lat: ${cidade.latitude}`,
-                    `Lon: ${cidade.longitude}`
-                ].filter(Boolean).join(" • ")
-            )
-        );
-
-        const botao = criarElemento(
-            "button",
-            "result-select",
-            "Consultar clima"
-        );
-
-        botao.type = "button";
-
-        botao.addEventListener("click", () => {
-            consultarClima(cidade);
-        });
-
-        item.append(informacoes, botao);
-        resultsList.appendChild(item);
-    });
-
-    searchResults.hidden = false;
+function loadFavorites(){
+try{
+const saved=localStorage.getItem(STORAGE_KEY);
+if(!saved)return [];
+const parsed=JSON.parse(saved);
+if(!Array.isArray(parsed))return [];
+return parsed.filter(city=>city&&typeof city.name==="string"&&typeof city.latitude==="number"&&typeof city.longitude==="number"&&Number.isFinite(city.latitude)&&Number.isFinite(city.longitude));
+}catch(error){
+console.error("Erro ao carregar favoritos:",error);
+return [];
 }
-
-// Consulta o clima usando as coordenadas retornadas pela primeira API
-async function consultarClima(cidade) {
-    weatherSection.hidden = true;
-
-    mostrarMensagem(
-        `Carregando o clima de ${cidade.name}...`,
-        "loading"
-    );
-
-    const parametros = new URLSearchParams({
-        latitude: cidade.latitude,
-        longitude: cidade.longitude,
-        current: [
-            "temperature_2m",
-            "relative_humidity_2m",
-            "apparent_temperature",
-            "weather_code",
-            "wind_speed_10m"
-        ].join(","),
-        daily: [
-            "weather_code",
-            "temperature_2m_max",
-            "temperature_2m_min",
-            "precipitation_probability_max"
-        ].join(","),
-        timezone: "auto",
-        forecast_days: "5"
-    });
-
-    try {
-        const dados = await buscarJSON(
-            `${API_WEATHER}?${parametros.toString()}`
-        );
-
-        mostrarClimaAtual(cidade, dados.current);
-        mostrarPrevisao(dados.daily);
-
-        weatherSection.hidden = false;
-        searchResults.hidden = true;
-
-        mostrarMensagem(
-            `Clima de ${cidade.name} atualizado com sucesso!`,
-            "success"
-        );
-    } catch (erro) {
-        console.error(erro);
-
-        mostrarMensagem(
-            "Não foi possível consultar o clima. Verifique sua conexão e tente novamente.",
-            "error"
-        );
-    }
 }
-
-// Mostra as condições meteorológicas atuais
-function mostrarClimaAtual(cidade, clima) {
-    document.getElementById("current-location").textContent =
-        `${cidade.name}, ${cidade.country}`;
-
-    document.getElementById("current-date").textContent =
-        new Date().toLocaleDateString("pt-BR", {
-            weekday: "long",
-            day: "numeric",
-            month: "long"
-        });
-
-    document.getElementById("current-description").textContent =
-        weatherCodes[clima.weather_code] ||
-        "Condição não disponível";
-
-    document.getElementById("current-icon").textContent =
-        clima.weather_code === 0 ? "☀️" :
-        clima.weather_code <= 2 ? "⛅" :
-        clima.weather_code >= 95 ? "⛈️" :
-        clima.weather_code >= 51 ? "🌧️" : "☁️";
-
-    document.getElementById("current-temperature").textContent =
-        clima.temperature_2m != null
-            ? `${clima.temperature_2m} °C`
-            : "Não disponível";
-
-    document.getElementById("feels-like").textContent =
-        clima.apparent_temperature != null
-            ? `${clima.apparent_temperature} °C`
-            : "Não disponível";
-
-    document.getElementById("humidity").textContent =
-        clima.relative_humidity_2m != null
-            ? `${clima.relative_humidity_2m}%`
-            : "Não disponível";
-
-    document.getElementById("wind-speed").textContent =
-        clima.wind_speed_10m != null
-            ? `${clima.wind_speed_10m} km/h`
-            : "Não disponível";
+function saveFavorites(){
+try{
+localStorage.setItem(STORAGE_KEY,JSON.stringify(favorites));
+}catch(error){
+console.error("Erro ao salvar favoritos:",error);
+showStatus("Não foi possível salvar os favoritos no navegador.","error");
 }
-
-// Monta os cartões da previsão para cinco dias
-function mostrarPrevisao(dias) {
-    forecastList.replaceChildren();
-
-    dias.time.slice(0, 5).forEach((data, indice) => {
-        const cartao = criarElemento("article", "forecast-card", "");
-
-        cartao.append(
-            criarElemento(
-                "p",
-                "forecast-day",
-                indice === 0
-                    ? "Hoje"
-                    : new Date(data + "T12:00:00").toLocaleDateString(
-                        "pt-BR",
-                        { weekday: "long" }
-                    )
-            ),
-            criarElemento(
-                "p",
-                "forecast-date",
-                new Date(data + "T12:00:00").toLocaleDateString(
-                    "pt-BR",
-                    { day: "2-digit", month: "short" }
-                )
-            ),
-            criarElemento(
-                "div",
-                "forecast-icon",
-                "🌤️"
-            ),
-            criarElemento(
-                "p",
-                "forecast-description",
-                weatherCodes[dias.weather_code?.[indice]] ||
-                "Condição não disponível"
-            ),
-            criarElemento(
-                "p",
-                "forecast-temperatures",
-                `Máx. ${dias.temperature_2m_max[indice] ?? "—"} °C | Mín. ${dias.temperature_2m_min[indice] ?? "—"} °C`
-            ),
-            criarElemento(
-                "p",
-                "forecast-rain",
-                dias.precipitation_probability_max?.[indice] == null
-                    ? "Chuva: não disponível"
-                    : `Chuva: ${dias.precipitation_probability_max[indice]}%`
-            )
-        );
-
-        forecastList.appendChild(cartao);
-    });
 }
-
-// Evento do formulário de pesquisa
-form.addEventListener("submit", async evento => {
-    evento.preventDefault();
-
-    const nomeCidade = cityInput.value.trim();
-
-    if (!nomeCidade) {
-        mostrarMensagem(
-            "Digite o nome de uma cidade.",
-            "error"
-        );
-        return;
-    }
-
-    searchResults.hidden = true;
-    resultsList.replaceChildren();
-    mostrarMensagem("Pesquisando cidade...", "loading");
-
-    try {
-        const dados = await pesquisarCidade(nomeCidade);
-        const cidades = (dados.results || []).filter(cidade =>
-            Number.isFinite(cidade.latitude) &&
-            Number.isFinite(cidade.longitude)
-        );
-
-        if (cidades.length === 0) {
-            mostrarMensagem(
-                "Nenhuma cidade encontrada.",
-                "info"
-            );
-            return;
-        }
-
-        mostrarResultados(cidades);
-
-        mostrarMensagem(
-            "Selecione a cidade correta nos resultados.",
-            "success"
-        );
-    } catch (erro) {
-        console.error(erro);
-
-        mostrarMensagem(
-            "Erro ao pesquisar a cidade. Confira sua internet.",
-            "error"
-        );
-    }
+async function searchCities(cityName){
+if(searchController)searchController.abort();
+searchController=new AbortController();
+const signal=searchController.signal;
+showStatus("🔄 Procurando cidades...","loading");
+searchButton.disabled=true;
+resultsSection.classList.add("hidden");
+cityResults.replaceChildren();
+clearWeather();
+try{
+const url=`${API_GEO}?name=${encodeURIComponent(cityName)}&count=10&language=pt&format=json`;
+const response=await fetch(url,{signal});
+if(!response.ok)throw new Error(`Erro HTTP ${response.status} ao localizar a cidade.`);
+const data=await response.json();
+if(!data.results||data.results.length===0){
+showStatus("Nenhuma cidade encontrada. Verifique o nome e tente novamente.","error");
+return;
+}
+displayCityResults(data.results);
+resultsSection.classList.remove("hidden");
+showStatus(`${data.results.length} localidade(s) encontrada(s). Selecione a cidade desejada.`,"success");
+}catch(error){
+if(error.name==="AbortError")return;
+console.error("Erro na pesquisa:",error);
+showStatus("Não foi possível localizar a cidade. Verifique sua conexão e tente novamente.","error");
+}finally{
+if(searchController?.signal===signal){
+searchButton.disabled=false;
+}
+}
+}
+function displayCityResults(cities){
+cityResults.replaceChildren();
+cities.forEach(city=>{
+const button=document.createElement("button");
+button.type="button";
+button.className="city-option";
+const name=document.createElement("strong");
+name.textContent=city.name;
+const details=document.createElement("span");
+details.textContent=[city.admin1,city.country].filter(Boolean).join(" - ");
+const coordinates=document.createElement("span");
+coordinates.textContent=`Latitude: ${city.latitude.toFixed(2)} | Longitude: ${city.longitude.toFixed(2)}`;
+button.append(name,details,coordinates);
+button.addEventListener("click",()=>selectCity(city));
+cityResults.appendChild(button);
 });
-
-// Preenche a pesquisa inicialmente com Charqueadas, RS
-cityInput.value = "Charqueadas";
-
-// Atribuição da fonte meteorológica
-console.log("Dados meteorológicos fornecidos pela Open-Meteo.");
+}
+async function selectCity(city){
+const cityData={
+id:city.id??null,
+name:city.name,
+admin1:city.admin1||"",
+country:city.country||"",
+country_code:city.country_code||"",
+latitude:Number(city.latitude),
+longitude:Number(city.longitude)
+};
+if(!Number.isFinite(cityData.latitude)||!Number.isFinite(cityData.longitude)){
+showStatus("As coordenadas desta localidade são inválidas.","error");
+return;
+}
+if(weatherController)weatherController.abort();
+weatherController=new AbortController();
+const signal=weatherController.signal;
+selectedCity=cityData;
+resultsSection.classList.add("hidden");
+weatherSection.classList.add("hidden");
+currentWeather.replaceChildren();
+forecast.replaceChildren();
+showStatus("🔄 Consultando as condições meteorológicas...","loading");
+try{
+const params=new URLSearchParams({
+latitude:String(cityData.latitude),
+longitude:String(cityData.longitude),
+current:"temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m",
+daily:"weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max",
+timezone:"auto",
+forecast_days:"6",
+temperature_unit:"celsius",
+wind_speed_unit:"kmh"
+});
+const response=await fetch(`${API_WEATHER}?${params.toString()}`,{signal});
+if(!response.ok)throw new Error(`Erro HTTP ${response.status} ao consultar o clima.`);
+const data=await response.json();
+if(!data.current||!data.daily)throw new Error("A API retornou dados meteorológicos incompletos.");
+if(selectedCity!==cityData)return;
+displayCurrentWeather(cityData,data);
+displayForecast(data.daily);
+weatherSection.classList.remove("hidden");
+updateFavoriteButton();
+showStatus(`Consulta concluída! Confira a previsão para ${cityData.name}.`,"success");
+}catch(error){
+if(error.name==="AbortError")return;
+console.error("Erro meteorológico:",error);
+if(selectedCity===cityData){
+clearWeather();
+showStatus("Não foi possível consultar a previsão do tempo. Tente novamente.","error");
+}
+}
+}
+function createDetail(label,value){
+const item=document.createElement("div");
+item.className="detail-item";
+const title=document.createElement("span");
+title.textContent=label;
+const content=document.createElement("strong");
+content.textContent=value;
+item.append(title,content);
+return item;
+}
+function displayCurrentWeather(city,data){
+const current=data.current;
+const info=getWeatherInfo(current.weather_code);
+const location=document.createElement("div");
+location.className="weather-location";
+location.textContent=`📍 ${city.name}${city.admin1?", "+city.admin1:""} - ${city.country}`;
+const main=document.createElement("div");
+main.className="weather-main";
+const temperatureArea=document.createElement("div");
+const temperature=document.createElement("div");
+temperature.className="temperature";
+temperature.textContent=current.temperature_2m!=null?`${Math.round(current.temperature_2m)}°C`:"--";
+const description=document.createElement("div");
+description.className="weather-description";
+description.textContent=info.description;
+temperatureArea.append(temperature,description);
+const icon=document.createElement("div");
+icon.className="weather-icon";
+icon.textContent=info.icon;
+main.append(temperatureArea,icon);
+const details=document.createElement("div");
+details.className="weather-details";
+details.append(
+createDetail("🌡️ Sensação térmica",current.apparent_temperature!=null?`${Math.round(current.apparent_temperature)}°C`:"Não disponível"),
+createDetail("💨 Velocidade do vento",current.wind_speed_10m!=null?`${current.wind_speed_10m} km/h`:"Não disponível"),
+createDetail("💧 Umidade do ar",current.relative_humidity_2m!=null?`${current.relative_humidity_2m}%`:"Não disponível"),
+createDetail("🌧️ Precipitação",current.precipitation!=null?`${current.precipitation} mm`:"Não disponível")
+);
+currentWeather.replaceChildren(location,main,details);
+}
+function formatDate(dateString){
+const date=new Date(`${dateString}T12:00:00`);
+return date.toLocaleDateString("pt-BR",{weekday:"short",day:"2-digit",month:"2-digit"});
+}
+function displayForecast(daily){
+forecast.replaceChildren();
+if(!daily.time||daily.time.length===0){
+const message=document.createElement("p");
+message.textContent="Previsão diária não disponível.";
+forecast.appendChild(message);
+return;
+}
+daily.time.forEach((date,index)=>{
+const card=document.createElement("div");
+card.className="forecast-card";
+const info=getWeatherInfo(daily.weather_code?.[index]);
+const day=document.createElement("div");
+day.className="day";
+day.textContent=index===0?"Hoje":formatDate(date);
+const icon=document.createElement("div");
+icon.className="icon";
+icon.textContent=info.icon;
+const description=document.createElement("div");
+description.className="description";
+description.textContent=info.description;
+const temperatures=document.createElement("div");
+temperatures.className="temperatures";
+const maximum=daily.temperature_2m_max?.[index];
+const minimum=daily.temperature_2m_min?.[index];
+temperatures.textContent=`${maximum!=null?Math.round(maximum)+"°":"--"} / `;
+const minSpan=document.createElement("span");
+minSpan.textContent=minimum!=null?`${Math.round(minimum)}°`:"--";
+temperatures.appendChild(minSpan);
+const rain=document.createElement("div");
+rain.className="rain";
+const probability=daily.precipitation_probability_max?.[index];
+rain.textContent=probability!=null?`🌧️ Chuva: ${probability}%`:"🌧️ Chuva: Não disponível";
+card.append(day,icon,description,temperatures,rain);
+forecast.appendChild(card);
+});
+}
+function updateFavoriteButton(){
+if(!selectedCity)return;
+const exists=favorites.some(city=>getCityKey(city)===getCityKey(selectedCity));
+favoriteButton.textContent=exists?"♥ Cidade favoritada":"♡ Adicionar aos favoritos";
+favoriteButton.disabled=exists;
+}
+function addFavorite(){
+if(!selectedCity)return;
+const exists=favorites.some(city=>getCityKey(city)===getCityKey(selectedCity));
+if(exists){
+showStatus("Esta cidade já está nos seus favoritos.","error");
+return;
+}
+favorites.push({...selectedCity});
+saveFavorites();
+displayFavorites();
+updateFavoriteButton();
+showStatus(`${selectedCity.name} foi adicionada aos favoritos!`,"success");
+}
+function removeFavorite(key){
+favorites=favorites.filter(city=>getCityKey(city)!==key);
+saveFavorites();
+displayFavorites();
+updateFavoriteButton();
+showStatus("Cidade removida dos favoritos.","success");
+}
+function displayFavorites(){
+favoritesList.replaceChildren();
+if(favorites.length===0){
+const empty=document.createElement("div");
+empty.className="empty-favorites";
+empty.textContent="⭐ Você ainda não possui cidades favoritas. Consulte uma cidade e adicione-a à sua lista!";
+favoritesList.appendChild(empty);
+return;
+}
+favorites.forEach(city=>{
+const card=document.createElement("div");
+card.className="favorite-card";
+const info=document.createElement("div");
+info.className="favorite-info";
+const name=document.createElement("strong");
+name.textContent=city.name;
+const country=document.createElement("span");
+country.textContent=[city.admin1,city.country].filter(Boolean).join(" - ");
+info.append(name,country);
+info.addEventListener("click",()=>selectCity(city));
+const actions=document.createElement("div");
+actions.className="favorite-actions";
+const selectButton=document.createElement("button");
+selectButton.className="select-favorite";
+selectButton.type="button";
+selectButton.textContent="Consultar";
+selectButton.addEventListener("click",()=>selectCity(city));
+const removeButton=document.createElement("button");
+removeButton.className="remove-favorite";
+removeButton.type="button";
+removeButton.textContent="✕";
+removeButton.setAttribute("aria-label",`Remover ${city.name} dos favoritos`);
+removeButton.addEventListener("click",()=>removeFavorite(getCityKey(city)));
+actions.append(selectButton,removeButton);
+card.append(info,actions);
+favoritesList.appendChild(card);
+});
+}
+searchForm.addEventListener("submit",event=>{
+event.preventDefault();
+const cityName=cityInput.value.trim();
+if(!cityName){
+showStatus("Digite o nome de uma cidade antes de pesquisar.","error");
+cityInput.focus();
+return;
+}
+searchCities(cityName);
+});
+favoriteButton.addEventListener("click",addFavorite);
+displayFavorites();

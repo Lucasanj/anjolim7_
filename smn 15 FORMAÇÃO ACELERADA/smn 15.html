@@ -1,387 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>ClimaViva • Consulta Meteorológica</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="smn 15.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Consulte a previsão do tempo de diferentes cidades.">
+<title>ClimaTempo | Consulta Meteorológica</title>
+<link rel="stylesheet" href="smn 15.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
-
-    <div class="bg-orb orb-one"></div>
-    <div class="bg-orb orb-two"></div>
-
-    <!-- CABEÇALHO -->
-    <header class="topbar">
-
-        <a class="brand" href="#">
-            <span class="brand-icon">☁</span>
-
-            <span>
-                <strong>ClimaViva</strong>
-                <small>Consulta meteorológica</small>
-            </span>
-        </a>
-
-        <div class="top-actions">
-            <span class="live-dot"></span>
-            <span>Dados em tempo real</span>
-        </div>
-
-    </header>
-
-    <main class="container">
-
-        <!-- HERO -->
-        <section class="hero">
-
-            <div>
-
-                <p class="eyebrow">
-                    PREVISÃO INTELIGENTE
-                </p>
-
-                <h1>
-                    O clima da sua cidade,
-                    <br>
-                    <span>de um jeito simples.</span>
-                </h1>
-
-                <p class="hero-text">
-                    Pesquise uma cidade, acompanhe as condições atuais
-                    e veja a previsão dos próximos dias.
-                </p>
-
-            </div>
-
-            <div class="hero-art">
-
-                <div class="sun"></div>
-
-                <div class="cloud cloud-a"></div>
-
-                <div class="cloud cloud-b"></div>
-
-            </div>
-
-        </section>
-
-
-        <!-- PESQUISA -->
-        <section class="search-card">
-
-            <form id="searchForm">
-
-                <div class="search-box">
-
-                    <span>⌕</span>
-
-                    <input
-                        id="cityInput"
-                        type="text"
-                        placeholder="Digite o nome da cidade..."
-                        autocomplete="off"
-                    >
-
-                </div>
-
-                <button class="primary-btn" type="submit">
-
-                    <span>Pesquisar</span>
-
-                    <span>→</span>
-
-                </button>
-
-            </form>
-
-            <div
-                id="status"
-                class="status"
-                role="status">
-            </div>
-
-        </section>
-
-
-        <!-- RESULTADOS DAS CIDADES -->
-        <section
-            id="locationsSection"
-            class="panel hidden">
-
-            <div class="section-heading">
-
-                <div>
-
-                    <p class="eyebrow">
-                        RESULTADOS
-                    </p>
-
-                    <h2>
-                        Escolha uma localidade
-                    </h2>
-
-                </div>
-
-                <span
-                    id="resultCount"
-                    class="pill">
-                </span>
-
-            </div>
-
-            <div
-                id="locations"
-                class="locations-grid">
-            </div>
-
-        </section>
-
-
-        <!-- CLIMA -->
-        <section
-            id="weatherSection"
-            class="hidden">
-
-            <div class="current-card">
-
-                <div class="current-main">
-
-                    <div class="location-line">
-
-                        <span class="pin">
-                            ⌖
-                        </span>
-
-                        <span id="currentLocation">
-                            —
-                        </span>
-
-                    </div>
-
-                    <div
-                        class="date-now"
-                        id="currentDate">
-                        —
-                    </div>
-
-
-                    <div class="temperature-row">
-
-                        <div
-                            id="weatherIcon"
-                            class="big-weather-icon">
-                            ☀️
-                        </div>
-
-                        <div>
-
-                            <strong id="currentTemp">
-                                —
-                            </strong>
-
-                            <span>
-                                °C
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <p
-                        id="currentDescription"
-                        class="condition">
-                        —
-                    </p>
-
-                </div>
-
-
-                <!-- INFORMAÇÕES -->
-                <div class="weather-stats">
-
-                    <div class="stat">
-
-                        <span>💨</span>
-
-                        <small>
-                            Vento
-                        </small>
-
-                        <strong id="wind">
-                            —
-                        </strong>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <span>💧</span>
-
-                        <small>
-                            Umidade
-                        </small>
-
-                        <strong id="humidity">
-                            —
-                        </strong>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <span>🌡️</span>
-
-                        <small>
-                            Sensação
-                        </small>
-
-                        <strong id="feels">
-                            —
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <button
-                    id="favoriteBtn"
-                    class="favorite-btn"
-                    type="button">
-
-                    ☆ Adicionar aos favoritos
-
-                </button>
-
-            </div>
-
-
-            <!-- PREVISÃO -->
-            <div class="section-heading forecast-heading">
-
-                <div>
-
-                    <p class="eyebrow">
-                        PRÓXIMOS DIAS
-                    </p>
-
-                    <h2>
-                        Previsão de 5 dias
-                    </h2>
-
-                </div>
-
-            </div>
-
-
-            <div
-                id="forecast"
-                class="forecast-grid">
-            </div>
-
-        </section>
-
-
-        <!-- FAVORITOS -->
-        <section class="favorites panel">
-
-            <div class="section-heading">
-
-                <div>
-
-                    <p class="eyebrow">
-                        SEUS LOCAIS
-                    </p>
-
-                    <h2>
-                        Cidades favoritas
-                    </h2>
-
-                </div>
-
-                <span class="heart">
-                    ♥
-                </span>
-
-            </div>
-
-
-            <div
-                id="favoritesList"
-                class="favorites-grid">
-            </div>
-
-
-            <div
-                id="emptyFavorites"
-                class="empty-state">
-
-                <div class="empty-icon">
-                    ♡
-                </div>
-
-                <h3>
-                    Nenhuma cidade favorita
-                </h3>
-
-                <p>
-                    Pesquise uma cidade e toque em
-                    “Adicionar aos favoritos” para salvá-la.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- RODAPÉ -->
-        <footer>
-
-            <span>
-                ClimaViva • Projeto Front-end
-            </span>
-
-            <span>
-                Dados meteorológicos por
-                <a
-                    href="https://open-meteo.com/"
-                    target="_blank">
-                    Open-Meteo
-                </a>
-            </span>
-
-        </footer>
-
-    </main>
-
-
-    <!-- CARREGAMENTO -->
-    <div
-        id="loading"
-        class="loading hidden">
-
-        <div class="loader"></div>
-
-        <span>
-            Consultando dados meteorológicos...
-        </span>
-
-    </div>
-
-
-    <script src="smn 15.js"></script>
-
+<header class="header">
+<div class="logo">☀️ ClimaTempo</div>
+<p>Previsão do tempo em qualquer lugar do mundo</p>
+</header>
+<main class="container">
+<section class="search-section">
+<h1>Como está o tempo hoje?</h1>
+<p class="subtitle">Pesquise uma cidade e descubra a previsão meteorológica.</p>
+<form id="searchForm">
+<input type="text" id="cityInput" placeholder="Digite o nome da cidade..." autocomplete="off" aria-label="Nome da cidade">
+<button type="submit" id="searchButton">🔍 Pesquisar</button>
+</form>
+<div id="statusMessage" class="status" role="status" aria-live="polite"></div>
+</section>
+<section id="resultsSection" class="results-section hidden">
+<h2>📍 Selecione uma localidade</h2>
+<div id="cityResults" class="city-results"></div>
+</section>
+<section id="weatherSection" class="weather-section hidden">
+<div class="section-heading">
+<h2>Condições atuais</h2>
+<button id="favoriteButton" class="favorite-button">♡ Adicionar aos favoritos</button>
+</div>
+<div id="currentWeather" class="current-weather"></div>
+<h2 class="forecast-title">Previsão para os próximos dias</h2>
+<div id="forecast" class="forecast-grid"></div>
+<p class="attribution">Dados meteorológicos fornecidos por <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>.</p>
+</section>
+<section class="favorites-section">
+<h2>⭐ Minhas cidades favoritas</h2>
+<p class="subtitle">Suas cidades salvas ficam disponíveis mesmo após fechar o navegador.</p>
+<div id="favoritesList" class="favorites-list"></div>
+</section>
+</main>
+<footer>
+<p>ClimaTempo © 2026 | Desenvolvido para o projeto Bolsa Futuro Digital</p>
+<p>Fonte dos dados: Open-Meteo</p>
+</footer>
+<script src="smn 15.js"></script>
 </body>
 </html>
